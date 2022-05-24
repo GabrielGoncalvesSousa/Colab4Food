@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false,
         primaryKey: true,
       },
-      LALALALA: {
+      nomeStage: {
         type: DataTypes.STRING(45),
         allowNull: false,
       },

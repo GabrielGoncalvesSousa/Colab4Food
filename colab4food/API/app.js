@@ -40,8 +40,19 @@ app.get('/users/:id_user', async (req, res) => {
 
 app.listen(3000, async () => {
   console.log('Server running');
+  let format = 'YYYY-MM-DD hh:mm:ss ';
+  let todayDate = new Date();
+  console.log(todayDate);
 
-  // console.log(tipo_user.hasMany().count(user));
+  let year = todayDate.getFullYear();
+  let month = todayDate.getUTCMonth() + 1;
+  let day = todayDate.getDate();
+  let hours = todayDate.getHours();
+  let minutes = todayDate.getMinutes();
+  let seconds = todayDate.getSeconds();
+
+  let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
+  console.log(jesusChrist);
 
   await sequelize.sync({ force: true });
 
