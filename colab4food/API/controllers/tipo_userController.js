@@ -8,7 +8,7 @@ const addTipoUser = async (req, res) => {
   res.status(200).send(tipo_user);
 };
 
-const getALLTipoUser = async (req, res) => {
+const getAllTiposUser = async (req, res) => {
   console.log('yoo');
   let tipoUser = await Tipo_user.findAll();
   res.send(tipoUser);
@@ -16,5 +16,5 @@ const getALLTipoUser = async (req, res) => {
 
 module.exports = {
   addTipoUser,
-  getALLTipoUser,
+  getAllTiposUser,
 };
