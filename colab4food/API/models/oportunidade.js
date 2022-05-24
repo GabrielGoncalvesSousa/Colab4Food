@@ -77,7 +77,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.DATE(6),
         allowNull: true,
       },
-      finisDate: {
+      finishDate: {
         type: DataTypes.DATE(6),
         allowNull: true,
       },

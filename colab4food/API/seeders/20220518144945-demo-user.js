@@ -4,28 +4,28 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('user', [
       {
-        id_tipoUser: 0,
+        id_tipoUser: 1,
         nomeUser: 'Viewer Filipe',
         email: 'ViewerFilipe@gmail.com',
         username: 'ViewerFilipe',
         password: '1243',
       },
       {
-        id_tipoUser: 1,
+        id_tipoUser: 2,
         nomeUser: 'Collaborator Andreia',
         email: 'Collaborator Andreia@gmail.com',
         username: 'CollaboratorAndreia',
         password: '1243',
       },
       {
-        id_tipoUser: 2,
+        id_tipoUser: 3,
         nomeUser: 'Manager Maneu',
         email: 'Manager Maneu@gmail.com',
         username: 'ManagerManeu',
         password: '1243',
       },
       {
-        id_tipoUser: 3,
+        id_tipoUser: 4,
         nomeUser: 'Gabriel Sousa',
         email: 'gabmin@gmail.com',
         username: 'Gabmin',
