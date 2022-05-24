@@ -2,7 +2,7 @@
   "name": "colab4food",
   "version": "0.0.0",
   "scripts": {
-    "devStart" : "nodemon ./src/database/server.js",
+    "devStart": "nodemon ./API/app.js",
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5050",
@@ -12,9 +12,12 @@
     "bcrypt": "^5.0.1",
     "express": "^4.18.1",
     "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
     "node": "^17.7.2",
     "nodemon": "^2.0.16",
     "pinia": "^2.0.13",
+    "sequelize-auto": "^0.8.8",
+    "sequelize-cli": "^6.4.1",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
   },
