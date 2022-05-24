@@ -47,13 +47,13 @@ module.exports = function(sequelize, DataTypes) {
             { name: 'id_user' },
           ],
         },
-        // {
-        //   name: 'id_tipoUser_idx',
-        //   using: 'BTREE',
-        //   fields: [
-        //     { name: 'id_tipoUser' },
-        //   ],
-        // },
+        {
+          name: 'id_tipoUser_idx',
+          using: 'BTREE',
+          fields: [
+            { name: 'id_tipoUser' },
+          ],
+        },
       ],
     }
   );
