@@ -1,5 +1,4 @@
 var DataTypes = require('sequelize').DataTypes;
-const { get } = require('http');
 var _cargo = require('./cargo');
 var _contacto = require('./contacto');
 var _distrito = require('./distrito');
@@ -17,9 +16,7 @@ var _tipo_servico = require('./tipo_servico');
 var _tipo_user = require('./tipo_user');
 var _user = require('./user');
 
-console.log('Logging moduke');
-console.log(_user);
-async function initModels(sequelize) {
+function initModels(sequelize) {
   var cargo = _cargo(sequelize, DataTypes);
   var contacto = _contacto(sequelize, DataTypes);
   var distrito = _distrito(sequelize, DataTypes);
@@ -36,8 +33,6 @@ async function initModels(sequelize) {
   var tipo_servico = _tipo_servico(sequelize, DataTypes);
   var tipo_user = _tipo_user(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
-  console.log('logging this shit');
-  console.log(_user(sequelize, DataTypes));
 
   oportunidade.belongsTo(interacao, { as: 'id_interacao_interacao', foreignKey: 'id_interacao' });
   interacao.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_interacao' });
@@ -81,18 +76,9 @@ async function initModels(sequelize) {
   tipo_organizacao.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_tipoOrganizacao' });
   oportunidade.belongsTo(tipo_servico, { as: 'id_tipoServico_tipo_servico', foreignKey: 'id_tipoServico' });
   tipo_servico.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_tipoServico' });
-  //
+
   user.belongsTo(tipo_user, { foreignKey: 'id_tipoUser' });
   tipo_user.hasMany(user, { foreignKey: 'id_tipoUser', as: 'Users' });
-  // console.log('OEWRFIHEOIRHFOEIHRFOIHIOFHOEIHFOIHEORFHOIERHFIO');
-  // console.log('thisss');
-
-  // console.log(user.associations);
-  // console.log(tipo_user.associations);
-  // let ff = tipo_user.getUsers;
-  // console.log('ESFIHJEI5gpokgp5ojgH');
-  // console.log(typeof tipo_user());
-  //
 
   interacao.belongsTo(user, { as: 'id_user_user', foreignKey: 'id_user' });
   user.hasMany(interacao, { as: 'interacaos', foreignKey: 'id_user' });
@@ -100,8 +86,7 @@ async function initModels(sequelize) {
   user.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_user' });
   processo_contacto.belongsTo(user, { as: 'id_user_user', foreignKey: 'id_user' });
   user.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_user' });
-  // console.log('HOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO');
-  // console.log(oportunidade);
+
   return {
     cargo,
     contacto,
@@ -122,5 +107,3 @@ async function initModels(sequelize) {
   };
 }
 module.exports = initModels;
-module.exports.initModels = initModels;
-module.exports.default = initModels;
