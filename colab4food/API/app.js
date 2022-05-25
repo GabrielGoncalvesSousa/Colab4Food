@@ -1,25 +1,23 @@
-const { response } = require('express');
-const express = require('express');
-const { sequelize, Sequelize } = require('./models');
+// const { response } = require('express');
+// const express = require('express');
+const { sequelize, Sequelize } = require('./models/index');
+// console.log('ERPIGFJEROIGHJ');
+// console.log(Object.entries(sequelize));
 const app = require('./routes/indexRoute');
-const queryInterface = sequelize.getQueryInterface();
-app.use(express.json());
-
+// const queryInterface = sequelize.getQueryInterface();
+// app.use(express.json());
+// console.log(sequelize.models.user.associations);
 app.listen(3000, async () => {
   console.log('Server running');
   let format = 'YYYY-MM-DD hh:mm:ss ';
   let todayDate = new Date();
-  console.log(todayDate);
-
   let year = todayDate.getFullYear();
   let month = todayDate.getUTCMonth() + 1;
   let day = todayDate.getDate();
   let hours = todayDate.getHours();
   let minutes = todayDate.getMinutes();
   let seconds = todayDate.getSeconds();
-
   let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
-  console.log(jesusChrist);
 
   await sequelize.sync({ alter: true });
 
