@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../models/indexModels');
 
 const Contacto = db.contacto;
 

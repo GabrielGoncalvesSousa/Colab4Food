@@ -1,9 +1,9 @@
 // const { response } = require('express');
 // const express = require('express');
-const sequelize = require('./models/index');
+
 // console.log('ERPIGFJEROIGHJ');
 // console.log(Object.entries(sequelize));
-const app = require('./routes/indexRoute');
+const { app, sequelize } = require('./mainIndex');
 // const queryInterface = sequelize.getQueryInterface();
 // app.use(express.json());
 // console.log(sequelize.models.user.associations);

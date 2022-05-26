@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../models/indexModels');
 
 const TipoOrganizacao = db.tipo_organizacao;
 

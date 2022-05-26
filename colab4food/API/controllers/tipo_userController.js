@@ -1,4 +1,4 @@
-const sequelize = require('../models/index');
+const sequelize = require('../models/indexModels');
 db = sequelize.models;
 
 const Tipo_user = db.tipo_user;

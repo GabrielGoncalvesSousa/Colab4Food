@@ -1,4 +1,4 @@
-const db = require('../models');
+const db = require('../models/indexModels');
 
 const Prioridade = db.prioridade;
 
