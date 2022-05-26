@@ -16,7 +16,8 @@ var _tipo_servico = require('./tipo_servico');
 var _tipo_user = require('./tipo_user');
 var _user = require('./user');
 
-function initModels(sequelize) {
+function initModels(Sequelize) {
+  let sequelize = Sequelize;
   var cargo = _cargo(sequelize, DataTypes);
   var contacto = _contacto(sequelize, DataTypes);
   var distrito = _distrito(sequelize, DataTypes);
@@ -86,24 +87,6 @@ function initModels(sequelize) {
   user.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_user' });
   processo_contacto.belongsTo(user, { as: 'id_user_user', foreignKey: 'id_user' });
   user.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_user' });
-
-  return {
-    cargo,
-    contacto,
-    distrito,
-    fase_processo,
-    interacao,
-    loss_reason,
-    oportunidade,
-    organizacao,
-    prioridade,
-    processo_contacto,
-    source,
-    stage,
-    tipo_organizacao,
-    tipo_servico,
-    tipo_user,
-    user,
-  };
+  return sequelize;
 }
 module.exports = initModels;

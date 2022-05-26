@@ -1,9 +1,10 @@
-const db = require('../models');
+const sequelize = require('../models/index');
 
-const Cargo = db.cargo;
+const db = sequelize.models;
 
 const getAllCargos = async (req, res) => {
-  res.send(await Cargo.findAll());
+  //res.send(await db.cargo.findAll());
+  res.send(await db.user.findAll());
 };
 
 module.exports = {
