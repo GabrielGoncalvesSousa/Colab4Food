@@ -1,12 +1,16 @@
-const sequelize = require('../models/index');
+let mainFunction = (db) => {
+  let getAllCargos = async (req, res) => {
+    //res.send(await db.cargo.findAll());
+    res.send(await db.user.findAll());
+  };
 
-const db = sequelize.models;
+  let funcaoxpto = async (req, res) => {};
 
-const getAllCargos = async (req, res) => {
-  //res.send(await db.cargo.findAll());
-  res.send(await db.user.findAll());
+  return {
+    getAllCargos,
+  };
 };
 
 module.exports = {
-  getAllCargos,
+  mainFunction,
 };
