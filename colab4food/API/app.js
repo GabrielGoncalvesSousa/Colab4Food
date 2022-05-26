@@ -1,6 +1,6 @@
 // const { response } = require('express');
 // const express = require('express');
-const { sequelize, Sequelize } = require('./models/index');
+const sequelize = require('./models/index');
 // console.log('ERPIGFJEROIGHJ');
 // console.log(Object.entries(sequelize));
 const app = require('./routes/indexRoute');
@@ -19,7 +19,13 @@ app.listen(3000, async () => {
   let seconds = todayDate.getSeconds();
   let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
 
-  await sequelize.sync({ alter: true });
+  console.log('SEQUELIZE DENTRO DE APP.JS');
+  // console.log(sequelize);
+
+  await sequelize.sync({ alter: true, logging: false });
+
+  console.log('SEQUELIZE DEPOIS DO SYNC');
+  // console.log(sequelize);
 
   //Example of a migration constraint
   // await queryInterface.addConstraint('user', {

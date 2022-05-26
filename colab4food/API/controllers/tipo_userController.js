@@ -1,4 +1,5 @@
-const db = require('../models/index');
+const sequelize = require('../models/index');
+db = sequelize.models;
 
 const Tipo_user = db.tipo_user;
 
@@ -15,23 +16,32 @@ const getAllTiposUser = async (req, res) => {
 };
 
 const getTipoUserByUserId = async (req, res) => {
-  console.log(Object.entries(db));
-  console.log('DODSAAED');
-  console.log('A VER SEQUELIZE');
-  console.log(Object.entries(db.sequelize.models));
-  console.log(Object.entries(db.sequelize.models.user.associations));
+  // console.log('A VER DB');
+  // console.log(Object.entries(db));
+  // console.log('DODSAAED');
+  // console.log('A VER SEQUELIZE');
+  // console.log(Object.entries(db.config));
+  // console.log(Object.entries(db.models.user.associations));
+  let omg = require('../teste');
+  console.log('GOD HELP ME');
+  // console.log(db);
+  // console.log(typeof omg);
+  // console.log(omg);
+  // console.log(omg.humanosMerda);
+  // res.send(omg.humanosFixes);
+  // console.log(omg.humanosFixes[1]);
 
-  await db.sequelize.models.user
-    .findOne({
-      where: {
-        id_user: req.params.id_user,
-      },
-      include: db.sequelize.tipo_user,
-    })
-    .then((response) => {
-      res.send(response);
-    });
-  let teste = {};
+  // await db.sequelize.models.user
+  //   .findOne({
+  //     where: {
+  //       id_user: req.params.id_user,
+  //     },
+  //     include: db.sequelize.tipo_user,
+  //   })
+  //   .then((response) => {
+  //     res.send(response);
+  //   });
+  // let teste = {};
 
   // for (let i = 0; i < 4; i++) {
   //   teste[`lol${i}`] = i;

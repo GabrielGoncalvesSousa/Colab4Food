@@ -21,12 +21,10 @@ if (config.use_env_variable) {
 } else {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
-sequelize.models = require('./init-models')(sequelize);
-
-module.exports = {
-  sequelize,
-};
+//Isto não da return de nada, é so para correr a funcao, os inits de cada modulo ja poem automaticamente no sequelize.models e depois ao fazer as ligacoes tb ja fica dentro de cada module
+let helper = require('./init-models');
+let udpatedsequelizer = helper(sequelize);
+module.exports = udpatedsequelizer;
 
 /* 
 __dirname= caminho da directoria (caminho ate pasta models)
