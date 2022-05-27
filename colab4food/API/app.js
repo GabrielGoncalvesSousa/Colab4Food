@@ -17,12 +17,13 @@ app.listen(3000, async () => {
   let hours = todayDate.getHours();
   let minutes = todayDate.getMinutes();
   let seconds = todayDate.getSeconds();
+
   let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
 
   console.log('SEQUELIZE DENTRO DE APP.JS');
   // console.log(sequelize);
 
-  await sequelize.sync({ alter: true, logging: false });
+  await sequelize.sync({ alert: true, logging: false });
 
   console.log('SEQUELIZE DEPOIS DO SYNC');
   // console.log(sequelize);

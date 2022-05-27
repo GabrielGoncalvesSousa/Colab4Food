@@ -4,13 +4,46 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('tipo_servico', [
       {
-        nomeTipoServico: 'Associate',
+        nomeTipoServico: 'Art Review',
       },
       {
-        nomeTipoServico: 'Costumer',
+        nomeTipoServico: 'Troubleshooting & technical consultancy',
       },
       {
-        nomeTipoServico: 'Supplier',
+        nomeTipoServico: 'Development & optimization of food formulations',
+      },
+      {
+        nomeTipoServico: 'Proof of concept for new technologies',
+      },
+      {
+        nomeTipoServico: 'Schience4Food- acess & review of articles & conferences',
+      },
+      {
+        nomeTipoServico: 'Academy4Food - internships for students',
+      },
+      {
+        nomeTipoServico: 'Business intelligence',
+      },
+      {
+        nomeTipoServico: 'Market & consumre trend analaysis',
+      },
+      {
+        nomeTipoServico: 'Supplier identification',
+      },
+      {
+        nomeTipoServico: 'Development of technical & scientific roadmaps',
+      },
+      {
+        nomeTipoServico: 'Consultancy for RSD funding',
+      },
+      {
+        nomeTipoServico: 'Support in the process of tax incentives SIFIDE & patent box',
+      },
+      {
+        nomeTipoServico: 'Training4Food- specialzed & personalized technical courses',
+      },
+      {
+        nomeTipoServico: 'Product design & database structuring services in information technology',
       },
     ]);
   },

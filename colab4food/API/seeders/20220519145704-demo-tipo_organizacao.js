@@ -4,23 +4,23 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.bulkInsert('tipo_organizacao', [
       {
-        nomeTipoORganizacao: 'OrganizacaoTipo1',
+        nomeTipoORganizacao: 'Associate',
       },
 
       {
-        nomeTipoORganizacao: 'OrganizacaoTipo2',
+        nomeTipoORganizacao: 'Customer',
       },
 
       {
-        nomeTipoORganizacao: 'OrganizacaoTipo3',
+        nomeTipoORganizacao: 'Partner',
       },
 
       {
-        nomeTipoORganizacao: 'OrganizacaoTipo4',
+        nomeTipoORganizacao: 'Supplier',
       },
 
       {
-        nomeTipoORganizacao: 'OrganizacaoTipo5',
+        nomeTipoORganizacao: 'Other',
       },
     ]);
   },
