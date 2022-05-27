@@ -1,20 +1,20 @@
 let mainIndexController = (db) => {
   const cargoController = require('../controllers/cargoController').mainFunction(db);
-  const contactoController = require('../controllers/contactoController');
-  const distritoController = require('../controllers/distritoController');
-  const fase_processoController = require('../controllers/fase_processoController');
-  const interacaoController = require('../controllers/interacaoController');
-  const loss_reasonController = require('../controllers/loss_reasonController');
-  const oportunidadeController = require('../controllers/oportunidadeController');
-  const organizacaoController = require('../controllers/organizacaoController');
-  const prioridadeController = require('../controllers/prioridadeController');
-  const processo_contactoController = require('../controllers/processo_contactoController');
-  const sourceController = require('../controllers/sourceController');
-  const stageController = require('../controllers/stageController');
-  const tipo_organizacaoController = require('../controllers/tipo_organizacaoController');
-  const tipo_servicoController = require('../controllers/tipo_servicoController');
-  const tipoUserController = require('../controllers/tipo_userController');
-  const userController = require('../controllers/userController');
+  const contactoController = require('../controllers/contactoController').mainFunction(db);
+  const distritoController = require('../controllers/distritoController').mainFunction(db);
+  const fase_processoController = require('../controllers/fase_processoController').mainFunction(db);
+  const interacaoController = require('../controllers/interacaoController').mainFunction(db);
+  const loss_reasonController = require('../controllers/loss_reasonController').mainFunction(db);
+  const oportunidadeController = require('../controllers/oportunidadeController').mainFunction(db);
+  const organizacaoController = require('../controllers/organizacaoController').mainFunction(db);
+  const prioridadeController = require('../controllers/prioridadeController').mainFunction(db);
+  const processo_contactoController = require('../controllers/processo_contactoController').mainFunction(db);
+  const sourceController = require('../controllers/sourceController').mainFunction(db);
+  const stageController = require('../controllers/stageController').mainFunction(db);
+  const tipo_organizacaoController = require('../controllers/tipo_organizacaoController').mainFunction(db);
+  const tipo_servicoController = require('../controllers/tipo_servicoController').mainFunction(db);
+  const tipo_userController = require('../controllers/tipo_userController').mainFunction(db);
+  const userController = require('../controllers/userController').mainFunction(db);
 
   return {
     cargoController,
@@ -31,7 +31,7 @@ let mainIndexController = (db) => {
     stageController,
     tipo_organizacaoController,
     tipo_servicoController,
-    tipoUserController,
+    tipo_userController,
     userController,
   };
 };

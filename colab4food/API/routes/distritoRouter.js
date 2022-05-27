@@ -1,6 +1,9 @@
-const distritoController = require('../controllers/distritoController');
 const router = require('express').Router();
 
-router.get('/getAllDistritos', distritoController.getAllDistritos);
+let distritoRouter = (distritoController) => {
+  let getAllDistritos = distritoController.getAllDistritos;
+  router.get('/getAllDistritos', getAllDistritos);
+  return router;
+};
 
-module.exports = router;
+module.exports = distritoRouter;

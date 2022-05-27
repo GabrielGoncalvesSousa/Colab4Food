@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllFasesProcesso = async (req, res) => {
+    res.send(await db.fase_processo.findAll());
+  };
 
-const FaseProcesso = db.fase_processo;
-
-const getAllFasesProcesso = async (req, res) => {
-  res.send(await FaseProcesso.findAll());
+  return {
+    getAllFasesProcesso,
+  };
 };
 
 module.exports = {
-  getAllFasesProcesso,
+  mainFunction,
 };

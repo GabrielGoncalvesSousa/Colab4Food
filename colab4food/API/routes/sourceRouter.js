@@ -1,6 +1,9 @@
-const sourceController = require('../controllers/sourceController');
 const router = require('express').Router();
 
-router.get('/getAllSources', sourceController.getAllSources);
+let sourceRouter = (sourceController) => {
+  let getAllSources = sourceController.getAllSources;
+  router.get('/getAllSources', getAllSources);
+  return router;
+};
 
-module.exports = router;
+module.exports = sourceRouter;

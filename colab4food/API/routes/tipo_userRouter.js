@@ -1,9 +1,13 @@
-const tipoUserController = require('../controllers/tipo_userController');
-
 const router = require('express').Router();
 
-router.get('/getAllTiposUser', tipoUserController.getAllTiposUser);
+let tipo_userRouter = (tipo_userController) => {
+  console.log(tipo_userController);
+  let getAllTiposUser = tipo_userController.getAllTiposUser;
+  router.get('/getAllTiposUser', getAllTiposUser);
 
-router.get('/getTipoUserByUserId=:id_user', tipoUserController.getTipoUserByUserId);
+  let getTipoUserByUserId = tipo_userController.getTipoUserByUserId;
+  router.get('/getTipoUserByUserId=:id_user', getTipoUserByUserId);
+  return router;
+};
 
-module.exports = router;
+module.exports = tipo_userRouter;

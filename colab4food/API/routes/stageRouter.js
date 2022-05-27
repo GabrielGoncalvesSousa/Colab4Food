@@ -1,6 +1,9 @@
-const stageController = require('../controllers/stageController');
 const router = require('express').Router();
 
-router.get('/getAllStages', stageController.getAllStages);
+let stageRouter = (stageController) => {
+  let getAllStages = stageController.getAllStages;
+  router.get('/getAllStages', getAllStages);
+  return router;
+};
 
-module.exports = router;
+module.exports = stageRouter;

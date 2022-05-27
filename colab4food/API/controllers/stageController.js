@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllStages = async (req, res) => {
+    res.send(await db.stage.findAll());
+  };
 
-const Stage = db.stage;
-
-const getAllStages = async (req, res) => {
-  res.send(await Stage.findAll());
+  return {
+    getAllStages,
+  };
 };
 
 module.exports = {
-  getAllStages,
+  mainFunction,
 };

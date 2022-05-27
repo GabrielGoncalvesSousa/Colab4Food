@@ -1,6 +1,9 @@
-const processo_contactoController = require('../controllers/processo_contactoController');
 const router = require('express').Router();
 
-router.get('/getAllProcessosContacto', processo_contactoController.getAllProcessosContacto);
+let processo_contactoRouter = (processo_contactoController) => {
+  let getAllProcessosContacto = processo_contactoController.getAllProcessosContacto;
+  router.get('/getAllProcessosContacto', getAllProcessosContacto);
+  return router;
+};
 
-module.exports = router;
+module.exports = processo_contactoRouter;

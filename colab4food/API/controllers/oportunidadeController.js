@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllOportunidades = async (req, res) => {
+    res.send(await db.oportunidade.findAll());
+  };
 
-const Oportunidade = db.oportunidade;
-
-const getAllOportunidades = async (req, res) => {
-  res.send(await Oportunidade.findAll());
+  return {
+    getAllOportunidades,
+  };
 };
 
 module.exports = {
-  getAllOportunidades,
+  mainFunction,
 };

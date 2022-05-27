@@ -1,6 +1,9 @@
-const oportunidadeController = require('../controllers/oportunidadeController');
 const router = require('express').Router();
 
-router.get('/getAllOportunidades', oportunidadeController.getAllOportunidades);
+let oportunidadeRouter = (oportunidadeController) => {
+  let getAllOportunidades = oportunidadeController.getAllOportunidades;
+  router.get('/getAllOportunidades', getAllOportunidades);
+  return router;
+};
 
-module.exports = router;
+module.exports = oportunidadeRouter;

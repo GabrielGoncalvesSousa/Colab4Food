@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllPrioridades = async (req, res) => {
+    res.send(await db.prioridade.findAll());
+  };
 
-const Prioridade = db.prioridade;
-
-const getAllPrioridades = async (req, res) => {
-  res.send(await Prioridade.findAll());
+  return {
+    getAllPrioridades,
+  };
 };
 
 module.exports = {
-  getAllPrioridades,
+  mainFunction,
 };

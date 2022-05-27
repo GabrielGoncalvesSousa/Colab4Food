@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllProcessosContacto = async (req, res) => {
+    res.send(await db.processo_contacto.findAll());
+  };
 
-const ProcessoContacto = db.processo_contacto;
-
-const getAllProcessosContacto = async (req, res) => {
-  res.send(await ProcessoContacto.findAll());
+  return {
+    getAllProcessosContacto,
+  };
 };
 
 module.exports = {
-  getAllProcessosContacto,
+  mainFunction,
 };

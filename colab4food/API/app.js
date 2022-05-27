@@ -1,12 +1,5 @@
-// const { response } = require('express');
-// const express = require('express');
-
-// console.log('ERPIGFJEROIGHJ');
-// console.log(Object.entries(sequelize));
 const { app, sequelize } = require('./mainIndex');
-// const queryInterface = sequelize.getQueryInterface();
-// app.use(express.json());
-// console.log(sequelize.models.user.associations);
+
 app.listen(3000, async () => {
   console.log('Server running');
   let format = 'YYYY-MM-DD hh:mm:ss ';
@@ -20,19 +13,16 @@ app.listen(3000, async () => {
 
   let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
 
-  console.log('SEQUELIZE DENTRO DE APP.JS');
-  // console.log(sequelize);
-
-  await sequelize.sync({ alert: true, logging: false });
-
-  console.log('SEQUELIZE DEPOIS DO SYNC');
-  // console.log(sequelize);
+  await sequelize.sync({ alert: true, logging: false }).then(() => {
+    console.log(`Database synced`);
+  });
 
   //Example of a migration constraint
   // await queryInterface.addConstraint('user', {
   //   fields: [
   //     'id_tipoUser',
   //   ],
+
   //   type: 'foreign key',
   //   name: 'FK_tipoUser_user',
   //   references: {
