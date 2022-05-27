@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllDistritos = async (req, res) => {
+    res.send(await db.distrito.findAll());
+  };
 
-const Distrito = db.distrito;
-
-const getAllDistritos = async (req, res) => {
-  res.send(await Distrito.findAll());
+  return {
+    getAllDistritos,
+  };
 };
 
 module.exports = {
-  getAllDistritos,
+  mainFunction,
 };

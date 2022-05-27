@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllInteracoes = async (req, res) => {
+    res.send(await db.interacao.findAll());
+  };
 
-const Interacao = db.interacao;
-
-const getAllInteracoes = async (req, res) => {
-  res.send(await Interacao.findAll());
+  return {
+    getAllInteracoes,
+  };
 };
 
 module.exports = {
-  getAllInteracoes,
+  mainFunction,
 };

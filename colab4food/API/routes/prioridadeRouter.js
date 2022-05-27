@@ -1,6 +1,9 @@
-const prioridadeController = require('../controllers/prioridadeController');
 const router = require('express').Router();
 
-router.get('/getAllPrioridades', prioridadeController.getAllPrioridades);
+let prioridadeRouter = (prioridadeController) => {
+  let getAllPrioridades = prioridadeController.getAllPrioridades;
+  router.get('/getAllPrioridades', getAllPrioridades);
+  return router;
+};
 
-module.exports = router;
+module.exports = prioridadeRouter;

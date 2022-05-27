@@ -1,6 +1,9 @@
-const contactoController = require('../controllers/contactoController');
 const router = require('express').Router();
 
-router.get('/getAllContactos', contactoController.getAllContactos);
+let contactoRouter = (contactoController) => {
+  let getAllContactos = contactoController.getAllContactos;
+  router.get('/getAllContactos', getAllContactos);
+  return router;
+};
 
-module.exports = router;
+module.exports = contactoRouter;

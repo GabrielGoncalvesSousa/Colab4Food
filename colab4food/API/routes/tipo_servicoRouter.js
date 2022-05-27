@@ -1,6 +1,9 @@
-const tipo_servicoController = require('../controllers/tipo_servicoController');
 const router = require('express').Router();
 
-router.get('/getAllTiposServico', tipo_servicoController.getAllTiposServico);
+let tipo_servicoRouter = (tipo_servicoController) => {
+  let getAllTiposServico = tipo_servicoController.getAllTiposServico;
+  router.get('/getAllTiposServico', getAllTiposServico);
+  return router;
+};
 
-module.exports = router;
+module.exports = tipo_servicoRouter;

@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllLossReasons = async (req, res) => {
+    res.send(await db.loss_reason.findAll());
+  };
 
-const LossReason = db.loss_reason;
-
-const getAllLossReasons = async (req, res) => {
-  res.send(await LossReason.findAll());
+  return {
+    getAllLossReasons,
+  };
 };
 
 module.exports = {
-  getAllLossReasons,
+  mainFunction,
 };

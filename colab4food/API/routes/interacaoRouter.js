@@ -1,6 +1,9 @@
-const interacaoController = require('../controllers/interacaoController');
 const router = require('express').Router();
 
-router.get('/getAllInteracoes', interacaoController.getAllInteracoes);
+let interacaoRouter = (interacaoController) => {
+  let getAllInteracoes = interacaoController.getAllInteracoes;
+  router.get('/getAllInteracoes', getAllInteracoes);
+  return router;
+};
 
-module.exports = router;
+module.exports = interacaoRouter;

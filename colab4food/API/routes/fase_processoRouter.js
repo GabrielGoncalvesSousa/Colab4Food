@@ -1,6 +1,9 @@
-const fase_processoController = require('../controllers/fase_processoController');
 const router = require('express').Router();
 
-router.get('/getAllFasesProcesso', fase_processoController.getAllFasesProcesso);
+let fase_processoRouter = (fase_processoController) => {
+  let getAllFasesProcesso = fase_processoController.getAllFasesProcesso;
+  router.get('/getAllFasesProcesso', getAllFasesProcesso);
+  return router;
+};
 
-module.exports = router;
+module.exports = fase_processoRouter;

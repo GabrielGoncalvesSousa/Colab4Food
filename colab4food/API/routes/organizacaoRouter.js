@@ -1,6 +1,9 @@
-const organizacaoController = require('../controllers/organizacaoController');
 const router = require('express').Router();
 
-router.get('/getAllOrganizacoes', organizacaoController.getAllOrganizacoes);
+let organizacaoRouter = (organizacaoController) => {
+  let getAllOrganizacoes = organizacaoController.getAllOrganizacoes;
+  router.get('/getAllOrganizacoes', getAllOrganizacoes);
+  return router;
+};
 
-module.exports = router;
+module.exports = organizacaoRouter;

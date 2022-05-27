@@ -1,6 +1,9 @@
-const loss_reasonController = require('../controllers/loss_reasonController');
 const router = require('express').Router();
 
-router.get('/getAllLossReasons', loss_reasonController.getAllLossReasons);
+let loss_reasonRouter = (loss_reasonController) => {
+  let getAllLossReasons = loss_reasonController.getAllLossReasons;
+  router.get('/getAllLossReasons', getAllLossReasons);
+  return router;
+};
 
-module.exports = router;
+module.exports = loss_reasonRouter;

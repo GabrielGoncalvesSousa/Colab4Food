@@ -1,11 +1,13 @@
-const db = require('../models/indexModels');
+let mainFunction = (db) => {
+  let getAllTiposServico = async (req, res) => {
+    res.send(await db.tipo_servico.findAll());
+  };
 
-const TipoServico = db.tipo_servico;
-
-const getAllTiposServico = async (req, res) => {
-  res.send(await TipoServico.findAll());
+  return {
+    getAllTiposServico,
+  };
 };
 
 module.exports = {
-  getAllTiposServico,
+  mainFunction,
 };
