@@ -3,8 +3,21 @@ let mainFunction = (db) => {
     res.send(await db.user.findAll());
   };
 
+  let getCargoById = async (req, res) => {
+    db.cargo
+      .findOne({
+        where: {
+          id_cargo: req.params.id,
+        },
+      })
+      .then((response) => {
+        res.send(response);
+      });
+  };
+
   return {
     getAllCargos,
+    getCargoById,
   };
 };
 

@@ -11,6 +11,9 @@ const router = require('express').Router();
 let cargoRouter = (cargoController) => {
   let getAllCargos = cargoController.getAllCargos;
   router.get('/getAllCargos', getAllCargos);
+
+  let getCargoById = cargoController.getCargoById;
+  router.get('/getCargoById/:id', getCargoById);
   return router;
 };
 
