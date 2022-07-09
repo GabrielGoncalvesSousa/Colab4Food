@@ -16,11 +16,11 @@ let mainFunction = (db) => {
   };
 
   const getUserById = async (req, res) => {
-    try {
+ try {
       return await db.user
         .findAll({
           where: {
-            id_user: req.params.id_user,
+            id_user: req.query.id_user,
           },
         })
         .then((response) => {
@@ -35,9 +35,36 @@ let mainFunction = (db) => {
     }
   };
 
+
+  const login = async (req, res) => {
+console.log(req.body.email);
+    try {
+         return await db.user
+           .findOne({
+             where: {
+               email: req.body.email,
+              password:req.body.password
+             },
+           })
+           .then((response) => {
+          
+             if (!response) {
+               throw 'No matches';
+             } else {
+               res.send(response);
+             }
+           });
+       } catch (err) {
+         res.send(err);
+       }
+
+     };
+
+
   return {
     getAllUsers,
     getUserById,
+    login
   };
 };
 

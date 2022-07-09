@@ -1,0 +1,50 @@
+Axios Vs VueAxios
+    Axios foi criado para Vue 2 e como estamos a usar Vue 3 + typescript usamos o VueAxios (que é basicamente um ficheiro tipo plugin)
+    como o axios e o axios Normal como as opcoes para o VueAxios.
+
+Existe formas de comentarmos codigo de uma forma mais completa, tipo
+    https://usejsdoc.org/index.html
+
+/**
+ * @author Gabriel
+ * @param {String} name Name of the user
+ * 
+ */
+
+view vs component
+
+    Em termos de estrutura e a mesma coisa so que
+
+    View- Destinado a ser usado no routing (basicamente a "pagina" que carrega os componentes que precisa)
+    Componentes- Pedacos de codigo que regra geral sao usados mais que 1 vez
+
+É mais um coding practice para manter as cenas consoante o default
+
+
+DUDE
+EXPORT DEFAULT DEFINE COMPONENT - TYPECHECK NA MERDA DO template
+SCRIPT LANG = "TS" - TYPECHECK NO SCRIPT, BRUH
+
+Não da para usar defineComponent como funcao global, temos sempre que dar import
+ou entao definimos a funcao como global em global.d.ts, 10 horas para chegar a esta conclusao 
+
+reactivity- reacao a dados que sao alterados, ex, um dado é alterado e o template atualiza
+
+Options api vs Composition api
+
+    Options - with Options API, we define a component's logic using an object of options such as data,
+    methods, and mounted. Properties defined by options are exposed on this inside functions, which ~
+    points to the component instance
+
+    Composition- With Composition API, we define a component's logic using imported API functions. In SFCs, Composition API is typically used with <script setup>. The setup attribute is a hint that makes Vue perform compile-time transforms that allow us to use Composition API with less boilerplate. For example, imports
+         and top-level variables / functions declared in <script setup> are directly usable in the template.
+
+
+<!-- 
+    * <script setup> = defineComponent({...}) ->Typecheck no template
+    * lang="ts" -> TypeCheck no script
+    *
+ -->
+
+ Vue - Naming conventions
+    Naming components called only 1 time and there can only be 1 instance at a time -> prefir with The-> TheComponent
