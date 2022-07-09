@@ -1,6 +1,20 @@
 mainIndexRoute = (indexController) => {
   const express = require('express');
   const app = express();
+
+  //cors = Cross-Origin Resource Sharing = de forma a fazeres pedidos de um servidor na rede (sem ser no mesmo pc)
+  const cors = require('cors');
+  app.use(cors());
+
+//para mandar dados pelo post e utilizar o body
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json({
+  strict:false
+}))
+
+
+
   console.log(indexController);
   const cargoRouter = require('./cargoRouter')(indexController.cargoController);
   app.use('/cargo', cargoRouter);

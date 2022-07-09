@@ -4,5 +4,9 @@
   "compilerOptions": {
     "composite": true,
     "types": ["node"]
-  }
+  },
+  "[vue]": {
+    "editor.formatOnSave": true
+    // "editor.defaultFormatter": "Vue.volar"
+},
 }
