@@ -1,5 +1,6 @@
 <template>
   <v-app>
+
     <v-main>
       <router-view :globalData="globalData" />
     </v-main>

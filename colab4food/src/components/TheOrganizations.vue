@@ -1,12 +1,10 @@
 
 <template>
-    <v-app>
+    <v-container id="container1" class="fill-height">
 
-        <v-card>
-            Orgs Component
-        </v-card>
 
-    </v-app>
+    </v-container>
+
 
 </template>
 

@@ -1,21 +1,17 @@
 <template>
-    <Sidebar />
-    <v-container class="fill-height" fill-height fluid id="container">
-        {{ globalData[0] }}
+    <Sidebar app />
+    <v-container id="container" class="fill-height">
         <router-view v-slot="{ Component }">
             <transition name="slide" mode="out-in">
-                <component :is="Component" :key="$route.path">
-                </component>
+                <component :is="Component" :key="$route.path"></component>
             </transition>
         </router-view>
     </v-container>
-
-
 </template>
 
 
 <script setup lang="ts">
-const props = defineProps<{
+defineProps<{
     globalData: string[]
 }>()
 

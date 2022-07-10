@@ -3,6 +3,7 @@ import LoginView from '@/views/LoginView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/MainView.vue'
 import OrganizationsComponent from '@/components/TheOrganizations.vue';
+import SkeletonLoader from '@/components/SkeletonLoader.vue';
 
 
 const router = createRouter({
@@ -33,6 +34,11 @@ const router = createRouter({
       name: 'login',
       component: LoginView
     },
+    {
+      path: "/skele",
+      name: 'skele',
+      component: SkeletonLoader
+    }
   ]
 })
 
