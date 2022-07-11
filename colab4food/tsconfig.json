@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue","./src/imports/imports.ts"],
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
@@ -13,5 +13,8 @@
     {
       "path": "./tsconfig.vite-config.json"
     }
+  ],
+  "files": [
+      "./node_modules/axios"
   ]
 }

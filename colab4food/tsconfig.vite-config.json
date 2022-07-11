@@ -3,10 +3,10 @@
   "include": ["vite.config.*"],
   "compilerOptions": {
     "composite": true,
-    "types": ["node"]
+    "types": ["node","vite/client","shims-axios","shimi"]
   },
   "[vue]": {
     "editor.formatOnSave": true
     // "editor.defaultFormatter": "Vue.volar"
-},
+}
 }

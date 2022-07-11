@@ -48,3 +48,12 @@ Options api vs Composition api
 
  Vue - Naming conventions
     Naming components called only 1 time and there can only be 1 instance at a time -> prefir with The-> TheComponent
+
+
+    Quando usamos a composition api nao temos acesso ao this (instancia desse componente)
+    logo nao temos acesso a coisas que guardamos globalmente no componente App,
+    dados guardados na componente instance do componente App e plugins instalados (como o vuex)
+
+
+
+Options API proxy , $data, $props, $el... é tudo read-only menos  nested properties in data, Atraves do proprio component public instance, usando this

@@ -4,6 +4,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/MainView.vue'
 import OrganizationsComponent from '@/components/TheOrganizations.vue';
 import SkeletonLoader from '@/components/SkeletonLoader.vue';
+import BrincarVue from '@/views/brincar.vue';
 
 
 const router = createRouter({
@@ -30,14 +31,19 @@ const router = createRouter({
     },
 
     {
-      path: '/',
-      name: 'login',
+      path: '/login',
+      name: '/login',
       component: LoginView
     },
     {
       path: "/skele",
       name: 'skele',
       component: SkeletonLoader
+    },
+    {
+      path: "/brincar",
+      name: 'brincar',
+      component: BrincarVue
     }
   ]
 })
