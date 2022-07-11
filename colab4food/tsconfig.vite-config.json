@@ -1,12 +1,16 @@
 {
   "extends": "@vue/tsconfig/tsconfig.node.json",
-  "include": ["vite.config.*"],
+  
+  "include": ["vite.config.*", "./src/axios.config.*"],
   "compilerOptions": {
     "composite": true,
-    "types": ["node","vite/client","shims-axios","shimi"]
+    "types": ["node","vite/client","/colab4food/src/axios"]
   },
   "[vue]": {
     "editor.formatOnSave": true
     // "editor.defaultFormatter": "Vue.volar"
-}
+},
+"files": [
+  "./node_modules/axios"
+]
 }

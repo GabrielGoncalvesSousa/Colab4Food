@@ -16,5 +16,6 @@
   ],
   "files": [
       "./node_modules/axios"
-  ]
+  ],
+  "outFile":"./dist/assets/tsconfigBundlerSeiLa.js"
 }

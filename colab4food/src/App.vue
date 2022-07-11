@@ -43,6 +43,8 @@ import { inject, getCurrentInstance, computed } from 'vue';
 import imports from './imports/imports';
 import { AxiosKey } from './symbols';
 
+
+
 console.log(getCurrentInstance());
 
 // console.log(window.)
@@ -57,10 +59,24 @@ let globalData = ['lol1,lol2']
 
 // shims
 
-console.log(axios)
+console.log(window.axios);
 
 
 onMounted(() => {
+
+  console.log(import.meta.env);
+  // console.log(axios);
+
+  // console.log(axios);
+  // console.log(axios2);
+
+  // let a = axios;
+  // console.log(a);
+
+  axiPlug.axios.get('http://192.168.1.82:3000/user/getAllUsers')
+    .then((response: any) => {
+      console.log(response);
+    })
 
 
 

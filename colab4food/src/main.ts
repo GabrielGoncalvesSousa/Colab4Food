@@ -9,15 +9,20 @@ import HomeComponent from '@/components/TheHome.vue';
 import OrganizationsComponent from '@/components/TheOrganizations.vue';
 import MainMenu from '@/views/MainView.vue';
 import brincarVue from '@/views/brincar.vue';
-import { AxiosKey } from './symbols';
-import VueAxios from 'vue-axios';
-
+import zaxios from 'axios';
+import AxiosStatic from 'axios'
 /*  Axios Vs VueAxios
 * Axios foi criado para Vue 2 e como estamos a usar Vue 3 + typescript usamos o VueAxios (que é basicamente um ficheiro tipo plugin)
 * como o axios e o axios Normal como as opcoes para o VueAxios.
 */
 
+console.log(axios);
+
 loadFonts()
+declare global {
+  const axios = zaxios
+}
+
 
 
 let app = createApp(App)
