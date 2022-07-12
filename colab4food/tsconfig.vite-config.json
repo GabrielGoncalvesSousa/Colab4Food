@@ -4,13 +4,10 @@
   "include": ["vite.config.*", "./src/axios.config.*"],
   "compilerOptions": {
     "composite": true,
-    "types": ["node","vite/client","/colab4food/src/axios"]
+    "types": ["node","vite/client"]
   },
   "[vue]": {
     "editor.formatOnSave": true
     // "editor.defaultFormatter": "Vue.volar"
-},
-"files": [
-  "./node_modules/axios"
-]
+}
 }

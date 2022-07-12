@@ -1,16 +1,32 @@
 <template>
-    <Sidebar app />
-    <v-container id="container" class="fill-height">
-        <router-view v-slot="{ Component }">
-            <transition name="slide" mode="out-in">
-                <component :is="Component" :key="$route.path"></component>
-            </transition>
-        </router-view>
-    </v-container>
+
+    <v-app>
+
+        <TheSidebar></TheSidebar>
+
+        <TheTopBar></TheTopBar>
+        <v-main fixed id="container">
+
+            <v-container fluid>
+                <router-view v-slot="{ Component }">
+
+                    <transition name="slide" mode="out-in">
+                        <component :is="Component" :key="$route.path"></component>
+                    </transition>
+                </router-view>
+            </v-container>
+
+        </v-main>
+    </v-app>
+
 </template>
 
-
 <script setup lang="ts">
+
+import TheTopBarVue from "@/components/TheTopBar.vue";
+import TheSidebar from "../components/TheSidebar.vue";
+import TheTopBar from "../components/TheTopBar.vue";
+
 defineProps<{
     globalData: string[]
 }>()
@@ -32,5 +48,6 @@ defineProps<{
 
 #container {
     background-color: red !important;
+    width: 100%
 }
 </style>

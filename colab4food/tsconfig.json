@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue","./src/imports/imports.ts"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue","./auto-imports.d.ts"],
   "compilerOptions": {
     "allowJs": true,
     "baseUrl": ".",
@@ -13,9 +13,5 @@
     {
       "path": "./tsconfig.vite-config.json"
     }
-  ],
-  "files": [
-      "./node_modules/axios"
-  ],
-  "outFile":"./dist/assets/tsconfigBundlerSeiLa.js"
+  ]
 }

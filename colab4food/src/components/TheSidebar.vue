@@ -1,5 +1,6 @@
 <template>
 
+
   <v-navigation-drawer permanent color="success">
     <img src="https://colab4food.com/front/img/logotipo.png" width=195 class="px-2 py-4 mx-auto d-block ">
 
@@ -75,12 +76,10 @@
         </router-link>
       </v-list-item>
 
-
-
-
     </v-list>
 
   </v-navigation-drawer>
+
 </template>
 
 <script setup lang="ts">

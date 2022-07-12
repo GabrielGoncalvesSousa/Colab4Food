@@ -40,9 +40,9 @@
 </template>
 
 <script setup lang="ts">
-import * as myImports from '@/imports/imports'
+import { ref } from '@vue/runtime-dom';
 
-let formControl = myImports.ref({
+let formControl = ref({
   showPassword: false,
   valid: true,
   username: '',
