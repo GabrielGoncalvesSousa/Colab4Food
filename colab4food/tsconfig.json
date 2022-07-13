@@ -2,10 +2,13 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue","./auto-imports.d.ts"],
   "compilerOptions": {
+    "jsx": "preserve",
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "balm-ui-plus": ["node_modules/balm-ui/dist/balm-ui-plus.d.ts"],
+      "balm-ui-next": ["node_modules/balm-ui/dist/balm-ui-next.d.ts"]
     }
   },
 

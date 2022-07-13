@@ -6,8 +6,12 @@ import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import axios from 'axios';
 import { AxiosKey } from './symbols';
-import VueAxios from 'vue-axios';
-import TheTopBar from './components/TheTopBar.vue';
+
+import BalmUI from 'balm-ui'; // Official Google Material Components
+import BalmUIPlus from 'balm-ui-plus'; // BalmJS Team Material Components
+import 'balm-ui-css';
+
+
 
 /*  Axios Vs VueAxios
 * Axios foi criado para Vue 2 e como estamos a usar Vue 3 + typescript usamos o VueAxios (que é basicamente um ficheiro tipo plugin)
@@ -19,9 +23,9 @@ loadFonts()
 let app = createApp(App)
   .use(router)
   .use(vuetify)
-  .use(VueAxios, axios)
+  .use(BalmUI)
+  .use(BalmUIPlus)
   .provide(AxiosKey, axios)
-  .component('TheTopBar',TheTopBar)
 app.mount('#app')
 
 

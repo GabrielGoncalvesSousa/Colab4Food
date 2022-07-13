@@ -6,6 +6,8 @@ import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
 import vuetify from 'vite-plugin-vuetify'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
+import react from '@vitejs/plugin-react'
+
 
 // https://vitejs.dev/config/
 //@ts-ignore
@@ -14,6 +16,17 @@ export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '')
 
   return {
+    //se usarmos js ele importa logo as cenas do react para podermos usar jsx (podermos misturar html dentro de scripts)
+    //Em typescript chama se tsx
+    alias: {
+      vue: 'vue/dist/vue.esm-bundler.js',
+      'balm-ui-css': 'balm-ui/dist/balm-ui.css',
+      'balm-ui-plus': 'balm-ui/dist/balm-ui-plus.js',
+      'balm-ui-next': 'balm-ui/dist/balm-ui-next.js'
+    },
+    esbuild: {
+      jsxInject: `import React from 'react'`
+    },
     server: {
       port: 5000,
       host: true,
@@ -23,6 +36,7 @@ export default defineConfig(({ command, mode }) => {
       vuetify({ autoImport: true }),
       viteCommonjs(),
       vueJsx(),
+      // react(),
       //Desactivated autoImport, managed to find a solution for importing axios
       //in a clean and effective way, since what auto import does is declaring
       //every import it detects you use as global
@@ -80,6 +94,7 @@ export default defineConfig(({ command, mode }) => {
     },
 
     envDir: './src/env',
+
 
   }
 }

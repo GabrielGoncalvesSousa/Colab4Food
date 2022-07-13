@@ -2,21 +2,30 @@
 
     <v-app>
 
-        <TheSidebar></TheSidebar>
+        <TheSidebar app elevate-on-scroll scroll-target="#scrolling-techniques-7"></TheSidebar>
+        <TheTopBar app></TheTopBar>
 
-        <TheTopBar></TheTopBar>
-        <v-main fixed id="container">
 
-            <v-container fluid>
+
+        <!-- <v-main id="container" scroll-off-screen> -->
+
+
+
+        <v-container fluid id="container" class=" fill-height">
+
+            <v-main id="container1">
                 <router-view v-slot="{ Component }">
 
                     <transition name="slide" mode="out-in">
-                        <component :is="Component" :key="$route.path"></component>
+
+                        <component :is="Component" :key="$route.path" app></component>
                     </transition>
                 </router-view>
-            </v-container>
-
-        </v-main>
+            </v-main>
+        </v-container>
+        <v-footer app color="purple">
+            reggr
+        </v-footer>
     </v-app>
 
 </template>
@@ -26,10 +35,18 @@
 import TheTopBarVue from "@/components/TheTopBar.vue";
 import TheSidebar from "../components/TheSidebar.vue";
 import TheTopBar from "../components/TheTopBar.vue";
+import TheHome from "../components/TheHome.vue";
 
 defineProps<{
     globalData: string[]
 }>()
+
+function onResize() {
+    //64px is v-app-bar height in your case
+    //@ts-ignore
+    // document.querySelector(".scrollable").style.height = (window.innerHeight - 200) + 'px';
+}
+
 
 </script>
 
@@ -47,7 +64,25 @@ defineProps<{
 }
 
 #container {
-    background-color: red !important;
+    background-color: rgb(153, 141, 141) !important;
     width: 100%
 }
+
+#container1 {
+    background-color: rgb(180, 170, 180) !important;
+    width: 100%
+}
+
+/* html {
+    overflow-y: hidden !important;
+} */
+
+/* 
+.scrollable {
+    overflow-y: scroll !important;
+} */
+
+/* #{
+
+} */
 </style>

@@ -57,3 +57,43 @@ Options api vs Composition api
 
 
 Options API proxy , $data, $props, $el... é tudo read-only menos  nested properties in data, Atraves do proprio component public instance, usando this
+
+Directives 
+
+ v-on:click
+  v-html - faz interpretar tags de html
+  v-on:input
+  v-on:submit - para submits
+  v-on:keyup- Quando uma tecla é premida e solta
+  v-once - Da load so a primeira vez
+  v-bind:value - da bind do valor do elemento a       uma variavel do vue
+  v-model - combinacao de v-bind:value e v-on:input, tambem de chamado 2 way binding, listening to the input + devolver o valor
+v-if- como se fosse um if, insere ou remove elementos do dom
+v-else - tem que ser usado imediatamente depois do v-if
+v-show - mete visible ou nao consoante a condicao, enquanto o v-if remove, este so esconde ou mostra
+v-for- for loop 
+
+
+<v-button v-bind:title ="tituloGuardadoNoScript"></v-button> , damos bind ao titulo do botao a uma var qualquer guardada dentro do script
+shorthand - :title="tituloGuardadoNoScript"
+
+
+<v-button v-on:click="someFunction"></v-button> , ao clickar faz algo
+Tudo que comeca com v-on tem o shorthand de @algo
+portanto isto fica @click, como outros exemplos de v-on
+
+
+    //se usarmos js ele importa logo as cenas do react para podermos usar jsx (podermos misturar html dentro de scripts)
+    //Em typescript chama se tsx
+
+    estudar reactivity de tsx com vue (o que sao refs e assim), refs é uma forma de 
+    quando as referencias padrao de template para script da composition api nao chegam para 
+    o que queremos, usamos ref para declarar uma referencia direta entre uma var da script e um 
+    elemento qualquer do template
+
+<template>
+    <div ref="varRef"></div>
+</template>
+<script setup lang='ts'>
+    let varRef=ref()
+</script>

@@ -1,10 +1,7 @@
 <template>
 
-  <v-app>
-    <v-main>
-      <router-view :globalData="globalData" />
-    </v-main>
-  </v-app>
+  <router-view :globalData="globalData" />
+
 
 </template>
 

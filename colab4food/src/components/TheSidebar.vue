@@ -1,7 +1,7 @@
 <template>
 
 
-  <v-navigation-drawer permanent color="success">
+  <v-navigation-drawer permanent color="blue" app>
     <img src="https://colab4food.com/front/img/logotipo.png" width=195 class="px-2 py-4 mx-auto d-block ">
 
 
@@ -79,6 +79,7 @@
     </v-list>
 
   </v-navigation-drawer>
+
 
 </template>
 

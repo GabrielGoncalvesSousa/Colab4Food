@@ -1,7 +1,7 @@
 {
   "extends": "@vue/tsconfig/tsconfig.node.json",
   
-  "include": ["vite.config.*", "./src/axios.config.*"],
+  "include": ["vite.config.*"],
   "compilerOptions": {
     "composite": true,
     "types": ["node","vite/client"]
