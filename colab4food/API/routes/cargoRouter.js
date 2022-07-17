@@ -13,7 +13,7 @@ let cargoRouter = (cargoController) => {
   router.get('/getAllCargos', getAllCargos);
 
   let getCargoById = cargoController.getCargoById;
-  router.get('/getCargoById/:id', getCargoById);
+  router.get('/getCargoById', getCargoById);
   return router;
 };
 

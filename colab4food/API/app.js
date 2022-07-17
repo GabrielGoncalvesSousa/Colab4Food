@@ -13,7 +13,7 @@ app.listen(3000, async () => {
 
   let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
 
-  await sequelize.sync({ alert: true, logging: true }).then(() => {
+  await sequelize.sync({ banana: true, logging: true }).then(() => {
     console.log(`Database synced`);
   });
 

@@ -27,15 +27,6 @@
 
         <button @click="show = !show">Toggle</button>
 
-        <!-- <v-btn @click="conaSshower = !conaSshower">
-            Click me to show CONA
-        </v-btn>
-
-        <Transition>
-            <v-card v-if="conaSshower">
-                <v-card-title>CONA</v-card-title>
-            </v-card>
-        </Transition> -->
 
 
     </v-container>
@@ -44,7 +35,7 @@
 
 
 <script >
-import { useCounterStore } from '../stores/counter';
+import { useGenericStore } from '@/stores/genericStore';
 
 export default {
 

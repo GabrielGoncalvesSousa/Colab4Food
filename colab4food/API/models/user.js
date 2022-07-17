@@ -15,8 +15,6 @@ module.exports = function (sequelize, DataTypes) {
           model: 'tipo_user',
           key: 'id_tipoUser',
         },
-        onDelete: 'SET NULL',
-        onUpdate: 'CASCADE',
       },
 
       nomeUser: {

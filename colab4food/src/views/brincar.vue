@@ -1,17 +1,22 @@
 <template>
+
+
   <ui-table v-model="refObject.selectedRows" :data="refObject.displayedData" :thead="refObject.thead"
     :tbody="refObject.tbody" :tfoot="refObject.tfoot" row-checkbox fullwidth selected-key="id_organizacao">
+
     <template #nomeSlot aria-describedby="th-cell-1">
       Nome
       <ui-icon v-tooltip="'Deixa de ser gay'" aria-describedby="th-cell-1">
         error_outline
       </ui-icon>
+
     </template>
     <template #nome="{ data }">
       <div class="">{{ data.nomeOrganizacao }}</div>
     </template>
     <template #actions="{ data }">
-      <ui-icon @click="show(data)">edit</ui-icon>
+
+      <ui-icon @click="show(data)" class="here">edit</ui-icon>
       <ui-icon @click="remove(data)">delete</ui-icon>
       <UiButton @click="$alert('cona')">Click Me</UiButton>
       <UiBottomSheet></UiBottomSheet>
@@ -21,13 +26,17 @@
     </ui-pagination>
   </ui-table>
 
+  <v-overlay v-if="switcher">portgkrptok</v-overlay>
 
-  <Transition name="edit" ref="TransEDIT">
-    <v-card v-if="switcher" style="text-align: center;">
-      <p>{{ dataFromRow }}</p>
+  <!-- <Teleport to="#here" v-if="switcher">
+    <Transition name="edit" class="editTransition">
+      <v-card>
+        <p>{{ dataFromRow }}</p>
+      </v-card>
+    </Transition>
+  </Teleport>
+ -->
 
-    </v-card>
-  </Transition>
 
 
   <!-- <Transition name="remove">
@@ -46,8 +55,10 @@
 </template>
 
 <script setup lang="ts">
-import { useCounterStore } from '../stores/counter';
+import { useGenericStore } from '../stores/genericStore';
 import { ref } from 'vue'
+
+const genericStore = useGenericStore()
 
 let dataFromRow = ref();
 let switcher = ref();
@@ -132,11 +143,11 @@ let refObject = ref({
 
 })
 
-const storeCounter = useCounterStore()
+
 
 let temp: any
 
-storeCounter.axios.get('http://192.168.1.82:3000/organizacao/getAllOrgsWithPriority')
+genericStore.axios.get('http://192.168.1.82:3000/organizacao/getAllOrgsWithPriority')
   .then((response) => {
 
     temp = response.data
@@ -154,17 +165,29 @@ storeCounter.axios.get('http://192.168.1.82:3000/organizacao/getAllOrgsWithPrior
 
   })
 
+// let teste = await storeCounter.getAllOrgInfo()
+// console.log(teste);
+
 
 function show(rowData: any) {
 
-  console.log(rowData);
-  dataFromRow.value = rowData
-  switcher.value = !switcher.value
+  (async () => {
+    dataFromRow.value = await genericStore.getAllOrgInfo(rowData.id_organizacao);
+    switcher.value = !switcher.value
+  })()
+
 }
+
 
 function edit(rowData: any) {
   console.log("trying to edit you cocksucker")
   console.log(rowData)
+
+  let teste = genericStore.getAllOrgInfo(1)
+  console.log(teste);
+
+
+
 }
 
 function remove(rowData: any) {
@@ -185,6 +208,7 @@ function onPage(page: number) {
 <style lang="scss">
 .edit-enter-active {
   animation: bounce-in 0.5s;
+
 }
 
 .edit-leave-active {
@@ -203,5 +227,12 @@ function onPage(page: number) {
   100% {
     transform: scale(1);
   }
+}
+
+.edit {
+  margin: auto;
+  padding-bottom: 500px;
+  background-color: red !important;
+  position: sticky !important;
 }
 </style> 

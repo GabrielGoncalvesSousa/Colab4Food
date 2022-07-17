@@ -12,7 +12,9 @@ let mainFunction = (db) => {
   }
 
   let getAllOrgInfo = async (req, res) => {
-    db.organizacao.findByPk(1, {
+    console.log(req.params);
+    console.log(req.body);
+    db.organizacao.findByPk(req.body.id, {
       include: [db.prioridade, db.distrito, db.tipo_organizacao, db.contacto]
     })
       .then((response) => {

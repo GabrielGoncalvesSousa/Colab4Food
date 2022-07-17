@@ -8,10 +8,12 @@
     "build": "vite build",
     "dev": "vite",
     "api": "nodemon ./API/app.js",
-    "frondEnd_Backend":"(/k  npm run dev --start) |  (/k  npm run api --start)",
+    "Api_FORCE": "nodemon ./API/appForceUpdateBd.js",
+    "frondEnd_Backend": "(/k  npm run dev --start) |  (/k  npm run api --start)",
     "preview": "vite preview --port 5050",
     "typecheck": "vue-tsc --noEmit",
-    "test":"./src/scripts/mainScript.bat"
+    "test": "./src/scripts/mainScript.bat",
+    "seeds": "cd ./API && npx sequelize-cli db:seed:all"
   },
   "main": "index.js",
   "dependencies": {

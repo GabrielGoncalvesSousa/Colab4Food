@@ -8,7 +8,8 @@ let organizacaoRouter = (organizacaoController) => {
   router.get('/getAllOrgsWithPriority', getAllOrgsWithPriority)
 
   let getAllOrgsInfo = organizacaoController.getAllOrgInfo;
-  router.get('/getAllOrgInfo', getAllOrgsInfo);
+  router.post('/getAllOrgInfo', getAllOrgsInfo);
+
   return router;
 };
 
