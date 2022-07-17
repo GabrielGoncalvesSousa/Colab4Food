@@ -1,130 +1,217 @@
 <template>
-  <v-card>
-    <v-card-title>
-      <v-text-field v-model="search" append-icon="mdi-magnify" label="Search" single-line hide-details></v-text-field>
-    </v-card-title>
-    <v-data-table :headers="headers" :items="desserts" :search="search"></v-data-table>
+  <ui-table v-model="selectedRows" :data="displayedData" :thead="thead" :tbody="tbody" :tfoot="tfoot" row-checkbox
+    fullwidth selected-key="id_organizacao">
+    <template #nomeSlot aria-describedby="th-cell-1">
+      Nome
+      <ui-icon v-tooltip="'Deixa de ser gay'" aria-describedby="th-cell-1">
+        error_outline
+      </ui-icon>
+    </template>
+    <template #nome="{ data }">
+      <div class="">{{ data.nomeOrganizacao }}</div>
+    </template>
+    <template #actions="{ data }">
+      <ui-icon @click="edit(data)">edit</ui-icon>
+      <ui-icon @click="remove(data)">delete</ui-icon>
 
-  </v-card>
+      <UiButton @click="$alert('Hello BalmUI')">Click Me</UiButton>
+      <UiBottomSheet></UiBottomSheet>
+    </template>
 
-  <div>
-    <b-table striped hover :items="items"></b-table>
-  </div>
+    <ui-pagination v-model="page" :total="total" @click="onPage(page)" showTotal></ui-pagination>
+  </ui-table>
 
-  <b-button variant="success">Button</b-button>
-</template><script>
+  <button @click="show = !show">Toggle</button>
+
+  <v-btn @click="conaSshower = !conaSshower">
+    Click me to show CONA
+  </v-btn>
+
+  <Transition name="edit" @auxclick="edit(data)">
+    <v-card v-if="conaSshower" style="text-align: center;">
+
+      <p>rth</p>
+
+    </v-card>
+  </Transition>
+
+
+  <Transition name="remove">
+    <v-card v-if="tyh" style="text-align: center;">
+      <v-card-title>CONA</v-card-title>
+    </v-card>
+  </Transition>
+
+
+  <Transition name="edit">
+    <v-card v-if="ht" style="text-align: center;">
+      <v-card-title>CONA</v-card-title>
+    </v-card>
+  </Transition>
+
+</template>
+
+<script >
+import { useCounterStore } from '../stores/counter';
+
 export default {
+
   data() {
+
     return {
-      search: '',
-      items: [
-        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-        { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-        { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-        { age: 38, first_name: 'Jami', last_name: 'Carney' }
+      conaSshower: false,
+      displayedData: [
       ],
-      headers: [
-        {
-          text: 'Dessert (100g serving)',
-          align: 'start',
-          filterable: false,
-          value: 'name',
-        },
-        { text: 'Calories', value: 'calories' },
-        { text: 'Fat (g)', value: 'fat' },
-        { text: 'Carbs (g)', value: 'carbs' },
-        { text: 'Protein (g)', value: 'protein' },
-        { text: 'Iron (%)', value: 'iron' },
+      allData: [
+
       ],
-      desserts: [
+      thead: [
         {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          fat: 6.0,
-          carbs: 24,
-          protein: 4.0,
-          iron: '1%',
+          value: 'ID Org',
+          sort: 'asc',
+          columnId: 'id_organizacao'
         },
         {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          fat: 9.0,
-          carbs: 37,
-          protein: 4.3,
-          iron: '1%',
+          slot: 'nomeSlot',
+          class: 'good',
+          sort: 'none',
+          columnId: 'nomeOrganizacao',
+
         },
-        {
-          name: 'Eclair',
-          calories: 262,
-          fat: 16.0,
-          carbs: 23,
-          protein: 6.0,
-          iron: '7%',
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          fat: 3.7,
-          carbs: 67,
-          protein: 4.3,
-          iron: '8%',
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          fat: 16.0,
-          carbs: 49,
-          protein: 3.9,
-          iron: '16%',
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          fat: 0.0,
-          carbs: 94,
-          protein: 0.0,
-          iron: '0%',
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          fat: 0.2,
-          carbs: 98,
-          protein: 0,
-          iron: '2%',
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          fat: 3.2,
-          carbs: 87,
-          protein: 6.5,
-          iron: '45%',
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          fat: 25.0,
-          carbs: 51,
-          protein: 4.9,
-          iron: '22%',
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          fat: 26.0,
-          carbs: 65,
-          protein: 7,
-          iron: '6%',
-        },
+        'Cidade',
+        'Distrito',
+        'Tipo Org',
+        'Prioridade',
+        'Actions'
       ],
-    }
+
+
+      tbody: [
+
+        {
+          field: 'id_organizacao',
+          align: 'center'
+        },
+        {
+          slot: 'nome',
+          align: 'left'
+        },
+        {
+          field: 'cidade',
+          class: 'test',
+          align: 'left'
+        },
+        {
+          field: 'id_distrito',
+          align: 'left',
+          fn: data => {
+            return data.distrito.nomeDistrito
+          }
+        },
+        {
+          field: 'id_tipoOrganizacao',
+          align: 'left',
+          fn: data => {
+            // return data.tipo_organizacao.nomeTipoOrganizacao
+            return data.tipo_organizacao.nomeTipoOrganizacao
+          }
+        },
+
+        {
+          field: 'prioridade',
+          fn: data => {
+            return data.prioridade.nomePrioridade
+          },
+          align: 'left',
+          colClass: 'prioridadeClass',
+        },
+
+        {
+          slot: 'actions'
+        }
+      ],
+
+      tfoot: [],
+
+      selectedRows: [],
+      page: 1,
+      total: 100
+    };
   },
-}
+  created() {
+    console.log(this)
+    // let { data } =
+    const storeCounter = useCounterStore()
+
+    let temp = storeCounter.axios.get('http://192.168.1.82:3000/organizacao/getAllOrgsWithPriority')
+      .then((response) => {
+
+        temp = response.data
+        temp = temp.concat(response.data, response.data, response.data, response.data, response.data, response.data)
+
+        let shuffled = temp
+          .map(value => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value)
+
+        this.allData = shuffled
+        this.total = this.allData.length
+        this.displayedData = this.allData.slice(0, 10)
+      })
+
+
+
+    // this.page = Math.round(megaArray.length / 10)
+
+    // this.total = response.data.length
+
+  },
+  methods: {
+    show(selectedRowsData) {
+
+      console.log(selectedRowsData);
+    },
+
+    edit(rowData) {
+      console.log("trying to edit you cocksucker");
+      console.log(rowData);
+    },
+
+    remove(rowData) {
+      console.log("ill remove your ass");
+      console.log(rowData);
+    },
+    onPage(page) {
+
+      //Caso pagina seja a primeira o displayedData vai gardar os dados do allData dos index de  0 -9 (sao 10 resultados por pagina)
+      //Caso contrario, por exemplo estamos na pagina 2, fica slice(10,20) , funcao que retorna de 10-19
+      page == 1 ? this.displayedData = this.allData.slice(0, 10) : this.displayedData = this.allData.slice((page - 1) * 10, page * 10)
+
+    }
+  }
+};
 </script>
-<style scoped>
-#container {
-  background-color: rgb(99, 185, 99) !important;
-  overflow: hidden;
+
+<style lang="scss">
+.edit-enter-active {
+  animation: bounce-in 0.5s;
 }
-</style>
+
+.edit-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+</style> 

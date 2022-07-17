@@ -1,15 +1,15 @@
-var mysql = require('mysql');
+import { createConnection } from 'mysql';
 
-var con = mysql.createConnection({
+var con = createConnection({
   host: 'localhost',
   user: 'colab4food',
   password: '1243',
   database: 'colab4food',
 });
 
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
-  con.query('SELECT * FROM user', function(err, result, fields) {
+  con.query('SELECT * FROM user', function (err, result, fields) {
     if (err) throw err;
     console.log(result);
   });

@@ -2,7 +2,6 @@
 
   <router-view :globalData="globalData" />
 
-
 </template>
 
 <!-- <script >
@@ -34,22 +33,23 @@ export default ({
 
 <script setup lang="ts">
 import { inject, onMounted } from '@vue/runtime-dom';
-import { injectStrict } from './symbols';
-import { AxiosKey } from './symbols';
+// import { injectStrict } from './symbols';
+// import { AxiosKey } from './symbols';
+
 import TheTopBar from './components/TheTopBar.vue';
 
 //Simple data to test communication between components
-const axios = injectStrict(AxiosKey)
+// const axios = injectStrict(AxiosKey)
 const globalData = ['lol1,lol2']
 
 
 onMounted(() => {
 
-
-  axios.get('http://192.168.1.82:3000/user/getAllUsers')
-    .then((response: any) => {
-      console.log(response);
-    })
-
 })
 </script>
+
+<style lang="scss">
+@use'@material/theme' with($primary: red,
+  $secondary: green,
+)
+</style>

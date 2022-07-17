@@ -1,0 +1,1 @@
+start cmd \k  npm run dev && title Front End Console && color 2 

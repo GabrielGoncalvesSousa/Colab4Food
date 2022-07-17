@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   return sequelize.define(
     'user',
     {
@@ -15,6 +15,8 @@ module.exports = function(sequelize, DataTypes) {
           model: 'tipo_user',
           key: 'id_tipoUser',
         },
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
       },
 
       nomeUser: {

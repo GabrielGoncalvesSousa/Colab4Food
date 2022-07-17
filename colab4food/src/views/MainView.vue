@@ -10,7 +10,7 @@
         <!-- <v-main id="container" scroll-off-screen> -->
 
 
-
+        <UiBottomSheet></UiBottomSheet>
         <v-container fluid id="container" class=" fill-height">
 
             <v-main id="container1">
@@ -27,15 +27,12 @@
             reggr
         </v-footer>
     </v-app>
-
 </template>
 
 <script setup lang="ts">
-
-import TheTopBarVue from "@/components/TheTopBar.vue";
 import TheSidebar from "../components/TheSidebar.vue";
 import TheTopBar from "../components/TheTopBar.vue";
-import TheHome from "../components/TheHome.vue";
+
 
 defineProps<{
     globalData: string[]

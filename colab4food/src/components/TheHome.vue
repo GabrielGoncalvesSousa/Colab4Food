@@ -3,268 +3,186 @@
 
     <v-container class="mx-auto" block fixed>
 
+        <ui-table v-model="selectedRows" :data="displayedData" :thead="thead" :tbody="tbody" :tfoot="tfoot" row-checkbox
+            fullwidth selected-key="id_organizacao">
+            <template #nomeSlot aria-describedby="th-cell-1">
+                Nome
+                <ui-icon v-tooltip="'Deixa de ser gay'" aria-describedby="th-cell-1">
+                    error_outline
+                </ui-icon>
+            </template>
+            <template #nome="{ data }">
+                <div class="">{{ data.nomeOrganizacao }}</div>
+            </template>
+            <template #actions="{ data }">
+                <ui-icon @click="edit(data)">edit</ui-icon>
+                <ui-icon @click="remove(data)">delete</ui-icon>
 
+                <UiButton @click="$alert('Hello BalmUI')">Click Me</UiButton>
+                <UiBottomSheet></UiBottomSheet>
+            </template>
 
-        What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum. What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
+            <ui-pagination v-model="page" :total="total" @click="onPage(page)" showTotal></ui-pagination>
+        </ui-table>
 
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text eve of Lorem Ipsum.
+        <button @click="show = !show">Toggle</button>
 
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
+        <!-- <v-btn @click="conaSshower = !conaSshower">
+            Click me to show CONA
+        </v-btn>
 
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing of Lorem Ipsum.
+        <Transition>
+            <v-card v-if="conaSshower">
+                <v-card-title>CONA</v-card-title>
+            </v-card>
+        </Transition> -->
 
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containingr since the 1500s, when an unknown printer took a galley of type and scrambled it to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still What is Lorem Ipsum?
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-        industry's
-        standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it
-        to
-        make
-        a type specimen book. It has survived not only five centuries, but also the leap into electronic
-        typesetting,
-        remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets
-        containing
-        Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including
-        versions
-        of Lorem Ipsum.
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still
-
-        Why do we use it?
-        It is a long established fact that a reader will be distracted by the readable content of a page when
-        looking at
-        its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters,
-        as
-        opposed to using 'Content here, content here', making it look like readable English. Many desktop
-        publishing
-        packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem
-        ipsum'
-        will uncover many web sites still in their infancy. Various versions have evolved over the years,
-        sometimes
-        by
-        accident, sometimes on purpose (injected humour and the like).
-
-
-        Where does it come from?
-        Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
-        Latin
-        literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-        Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum
-        passage,
-        and
-        going through the cites of the word in classical literature, discovered the undoubtable source. Lorem
-        Ipsum
-        comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and
-        Evil)
-        by
-        Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the
-        Renaissance.
-        The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-        The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.
-        Sections
-        1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
-        original
-        form, accompanied by English versions from the 1914 translation by H. Rackham.
 
     </v-container>
 
 </template>
 
-<script setup lang="ts">
 
+<script >
+import { useCounterStore } from '../stores/counter';
+
+export default {
+
+    data() {
+
+        return {
+            conaSshower: false,
+            displayedData: [
+            ],
+            allData: [
+
+            ],
+            thead: [
+                {
+                    value: 'ID Org',
+                    sort: 'asc',
+                    columnId: 'id_organizacao'
+                },
+                {
+                    slot: 'nomeSlot',
+                    class: 'good',
+                    sort: 'none',
+                    columnId: 'nomeOrganizacao',
+
+                },
+                'Cidade',
+                'Distrito',
+                'Tipo Org',
+                'Prioridade',
+                'Actions'
+            ],
+
+
+            tbody: [
+
+                {
+                    field: 'id_organizacao',
+                    align: 'center'
+                },
+                {
+                    slot: 'nome',
+                    align: 'left'
+                },
+                {
+                    field: 'cidade',
+                    class: 'test',
+                    align: 'left'
+                },
+                {
+                    field: 'id_distrito',
+                    align: 'left',
+                    fn: data => {
+                        return data.distrito.nomeDistrito
+                    }
+                },
+                {
+                    field: 'id_tipoOrganizacao',
+                    align: 'left',
+                    fn: data => {
+                        // return data.tipo_organizacao.nomeTipoOrganizacao
+                        return data.tipo_organizacao.nomeTipoOrganizacao
+                    }
+                },
+
+                {
+                    field: 'prioridade',
+                    fn: data => {
+                        return data.prioridade.nomePrioridade
+                    },
+                    align: 'left',
+                    colClass: 'prioridadeClass',
+                },
+
+                {
+                    slot: 'actions'
+                }
+            ],
+
+            tfoot: [],
+
+            selectedRows: [],
+            page: 1,
+            total: 100
+        };
+    },
+    created() {
+        console.log(this)
+        // let { data } =
+        const storeCounter = useCounterStore()
+
+        let temp = storeCounter.axios.get('http://192.168.1.82:3000/organizacao/getAllOrgsWithPriority')
+            .then((response) => {
+
+                temp = response.data
+                temp = temp.concat(response.data, response.data, response.data, response.data, response.data, response.data)
+
+                let shuffled = temp
+                    .map(value => ({ value, sort: Math.random() }))
+                    .sort((a, b) => a.sort - b.sort)
+                    .map(({ value }) => value)
+
+                this.allData = shuffled
+                this.total = this.allData.length
+                this.displayedData = this.allData.slice(0, 10)
+            })
+
+
+
+        // this.page = Math.round(megaArray.length / 10)
+
+        // this.total = response.data.length
+
+    },
+    methods: {
+        show(selectedRowsData) {
+
+            console.log(selectedRowsData);
+        },
+
+        edit(rowData) {
+            console.log("trying to edit you cocksucker");
+            console.log(rowData);
+        },
+
+        remove(rowData) {
+            console.log("ill remove your ass");
+            console.log(rowData);
+        },
+        onPage(page) {
+
+            //Caso pagina seja a primeira o displayedData vai gardar os dados do allData dos index de  0 -9 (sao 10 resultados por pagina)
+            //Caso contrario, por exemplo estamos na pagina 2, fica slice(10,20) , funcao que retorna de 10-19
+            page == 1 ? this.displayedData = this.allData.slice(0, 10) : this.displayedData = this.allData.slice((page - 1) * 10, page * 10)
+
+        }
+    }
+};
 </script>
 
-<style scoped>
-#container {
-    background-color: purple !important;
-    overflow: hidden;
-}
-</style>
+<style lang="scss">
+</style> 

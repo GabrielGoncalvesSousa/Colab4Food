@@ -9,13 +9,29 @@ let mainFunction = (db) => {
     res.status(200).send(tipo_user);
   };
 
+  // const getTipoUserByUserId = async (req, res) => {
+  //   db.user
+  //     .findOne({
+  //       where: {
+  //         id_user: req.params.id_user,
+  //       },
+  //       include: db.tipo_user,
+  //     })
+  //     .then((response) => {
+  //       res.send(response);
+  //     });
+  //   let teste = {};
+  //   for (let i = 0; i < 4; i++) {
+  //     teste[`lol${i}`] = i;
+  //   }
+  // };
+
   const getTipoUserByUserId = async (req, res) => {
     db.user
-      .findOne({
-        where: {
-          id_user: req.params.id_user,
-        },
-        include: db.tipo_user,
+      .findAll({
+        include: {
+          model: db.tipo_user
+        }
       })
       .then((response) => {
         res.send(response);

@@ -3,8 +3,17 @@ let mainFunction = (db) => {
     res.send(await db.organizacao.findAll());
   };
 
+  let getAllOrganizacoesWithPriority = async (req, res) => {
+    db.organizacao.findAll({
+      include: [db.prioridade, db.distrito, db.tipo_organizacao]
+    }).then((response) => {
+      res.send(response)
+    })
+  }
+
   return {
     getAllOrganizacoes,
+    getAllOrganizacoesWithPriority,
   };
 };
 

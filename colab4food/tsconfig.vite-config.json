@@ -1,13 +1,18 @@
-{
-  "extends": "@vue/tsconfig/tsconfig.node.json",
-  
-  "include": ["vite.config.*"],
-  "compilerOptions": {
-    "composite": true,
-    "types": ["node","vite/client"]
-  },
-  "[vue]": {
-    "editor.formatOnSave": true
-    // "editor.defaultFormatter": "Vue.volar"
-}
-}
+// {
+//   "extends": "@vue/tsconfig/tsconfig.node.json",
+//   "include": ["vite.config.*"],
+//   "compilerOptions": {
+//     "composite": true,
+//     "declaration": true,
+//     "baseUrl": ".",
+//     "paths": {
+//       "BalmUI":["node_modules/balm-ui/dist/balm-ui.d.ts"],
+//       "balm-ui-plus": ["node_modules/balm-ui/dist/balm-ui-plus.d.ts"],
+//       "balm-ui-next": ["node_modules/balm-ui/dist/balm-ui-next.d.ts"]
+//     }
+//   },
+//   "[vue]": {
+//     "editor.formatOnSave": true
+//     // "editor.defaultFormatter": "Vue.volar"
+// }
+// }

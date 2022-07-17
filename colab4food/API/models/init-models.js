@@ -35,58 +35,58 @@ function initModels(Sequelize) {
   var tipo_user = _tipo_user(sequelize, DataTypes);
   var user = _user(sequelize, DataTypes);
 
-  oportunidade.belongsTo(interacao, { as: 'id_interacao_interacao', foreignKey: 'id_interacao' });
-  interacao.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_interacao' });
-  contacto.belongsTo(cargo, { as: 'id_cargo_cargo', foreignKey: 'id_cargo' });
-  cargo.hasMany(contacto, { as: 'contactos', foreignKey: 'id_cargo' });
-  interacao.belongsTo(contacto, { as: 'id_contacto_contacto', foreignKey: 'id_contacto' });
-  contacto.hasMany(interacao, { as: 'interacaos', foreignKey: 'id_contacto' });
-  organizacao.belongsTo(distrito, { as: 'id_distrito_distrito', foreignKey: 'id_distrito' });
-  distrito.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_distrito' });
-  processo_contacto.belongsTo(fase_processo, { as: 'id_faseProcesso_fase_processo', foreignKey: 'id_faseProcesso' });
-  fase_processo.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_faseProcesso' });
-  oportunidade.belongsTo(loss_reason, { as: 'id_lossReason_loss_reason', foreignKey: 'id_lossReason' });
-  loss_reason.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_lossReason' });
-  contacto.belongsTo(organizacao, { as: 'id_organizacao_organizacao', foreignKey: 'id_organizacao' });
-  organizacao.hasMany(contacto, { as: 'contactos', foreignKey: 'id_organizacao' });
-  processo_contacto.belongsTo(organizacao, { as: 'id_organizacao_organizacao', foreignKey: 'id_organizacao' });
-  organizacao.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_organizacao' });
-  organizacao.belongsTo(prioridade, { as: 'id_prioridade_prioridade', foreignKey: 'id_prioridade' });
-  prioridade.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_prioridade' });
-  processo_contacto.belongsTo(prioridade, { as: 'id_prioridade_prioridade', foreignKey: 'id_prioridade' });
-  prioridade.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_prioridade' });
+  oportunidade.belongsTo(interacao, { foreignKey: 'id_interacao' });
+  interacao.hasMany(oportunidade, { foreignKey: 'id_interacao' });
+  contacto.belongsTo(cargo, { foreignKey: 'id_cargo' });
+  cargo.hasMany(contacto, { foreignKey: 'id_cargo' });
+  interacao.belongsTo(contacto, { foreignKey: 'id_contacto' });
+  contacto.hasMany(interacao, { foreignKey: 'id_contacto' });
+  organizacao.belongsTo(distrito, { foreignKey: 'id_distrito' });
+  distrito.hasMany(organizacao, { foreignKey: 'id_distrito' });
+  processo_contacto.belongsTo(fase_processo, { foreignKey: 'id_faseProcesso' });
+  fase_processo.hasMany(processo_contacto, { foreignKey: 'id_faseProcesso' });
+  oportunidade.belongsTo(loss_reason, {  foreignKey: 'id_lossReason' });
+  loss_reason.hasMany(oportunidade, {foreignKey: 'id_lossReason' });
+  contacto.belongsTo(organizacao, { foreignKey: 'id_organizacao' });
+  organizacao.hasMany(contacto, {foreignKey: 'id_organizacao' });
+  processo_contacto.belongsTo(organizacao, { foreignKey: 'id_organizacao' });
+  organizacao.hasMany(processo_contacto, { foreignKey: 'id_organizacao' });
+  organizacao.belongsTo(prioridade, { foreignKey: 'id_prioridade' });
+  prioridade.hasMany(organizacao, { foreignKey: 'id_prioridade' });
+  processo_contacto.belongsTo(prioridade, { foreignKey: 'id_prioridade' });
+  prioridade.hasMany(processo_contacto, {  foreignKey: 'id_prioridade' });
 
   interacao.belongsTo(processo_contacto, {
-    as: 'id_processoContacto_processo_contacto',
+  
     foreignKey: 'id_processoContacto',
   });
-  processo_contacto.hasMany(interacao, { as: 'interacaos', foreignKey: 'id_processoContacto' });
+  processo_contacto.hasMany(interacao, { foreignKey: 'id_processoContacto' });
   oportunidade.belongsTo(processo_contacto, {
-    as: 'id_processoContacto_processo_contacto',
+ 
     foreignKey: 'id_processoContacto',
   });
-  processo_contacto.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_processoContacto' });
-  oportunidade.belongsTo(source, { as: 'id_source_source', foreignKey: 'id_source' });
-  source.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_source' });
-  oportunidade.belongsTo(stage, { as: 'id_stage_stage', foreignKey: 'id_stage' });
-  stage.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_stage' });
+  processo_contacto.hasMany(oportunidade, { foreignKey: 'id_processoContacto' });
+  oportunidade.belongsTo(source, { foreignKey: 'id_source' });
+  source.hasMany(oportunidade, { foreignKey: 'id_source' });
+  oportunidade.belongsTo(stage, { foreignKey: 'id_stage' });
+  stage.hasMany(oportunidade, {foreignKey: 'id_stage' });
   organizacao.belongsTo(tipo_organizacao, {
-    as: 'id_tipoOrganizacao_tipo_organizacao',
+   
     foreignKey: 'id_tipoOrganizacao',
   });
-  tipo_organizacao.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_tipoOrganizacao' });
-  oportunidade.belongsTo(tipo_servico, { as: 'id_tipoServico_tipo_servico', foreignKey: 'id_tipoServico' });
-  tipo_servico.hasMany(oportunidade, { as: 'oportunidades', foreignKey: 'id_tipoServico' });
+  tipo_organizacao.hasMany(organizacao, { foreignKey: 'id_tipoOrganizacao' });
+  oportunidade.belongsTo(tipo_servico, { foreignKey: 'id_tipoServico' });
+  tipo_servico.hasMany(oportunidade, {  foreignKey: 'id_tipoServico' });
 
   user.belongsTo(tipo_user, { foreignKey: 'id_tipoUser' });
-  tipo_user.hasMany(user, { foreignKey: 'id_tipoUser', as: 'Users' });
+  tipo_user.hasMany(user, { foreignKey: 'id_tipoUser' });
 
-  interacao.belongsTo(user, { as: 'id_user_user', foreignKey: 'id_user' });
-  user.hasMany(interacao, { as: 'interacaos', foreignKey: 'id_user' });
+  interacao.belongsTo(user, { foreignKey: 'id_user' });
+  user.hasMany(interacao, {  foreignKey: 'id_user' });
   organizacao.belongsTo(user, { name: 'id_user_user', foreignKey: 'id_user' });
-  user.hasMany(organizacao, { as: 'organizacaos', foreignKey: 'id_user' });
-  processo_contacto.belongsTo(user, { as: 'id_user_user', foreignKey: 'id_user' });
-  user.hasMany(processo_contacto, { as: 'processo_contactos', foreignKey: 'id_user' });
+  user.hasMany(organizacao, {foreignKey: 'id_user' });
+  processo_contacto.belongsTo(user, { foreignKey: 'id_user' });
+  user.hasMany(processo_contacto, { foreignKey: 'id_user' });
   return sequelize;
 }
 module.exports = initModels;
