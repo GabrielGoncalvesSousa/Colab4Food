@@ -6,6 +6,9 @@ let organizacaoRouter = (organizacaoController) => {
 
   let getAllOrgsWithPriority = organizacaoController.getAllOrganizacoesWithPriority;
   router.get('/getAllOrgsWithPriority', getAllOrgsWithPriority)
+
+  let getAllOrgsInfo = organizacaoController.getAllOrgInfo;
+  router.get('/getAllOrgInfo', getAllOrgsInfo);
   return router;
 };
 
