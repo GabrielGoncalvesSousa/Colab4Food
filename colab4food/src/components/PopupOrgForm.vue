@@ -6,6 +6,9 @@
             <!--Acrescentar contained caso queira centrar no proprio conteudo mas nao fica tao bem-->
             <v-card>
                 <v-card-title>
+
+
+                    dwdwda
                     <span class=" text-h5">TITULO</span>
                 </v-card-title>
                 <v-card-text>
