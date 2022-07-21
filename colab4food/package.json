@@ -6,8 +6,8 @@
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
-    "dev": "vite",
-    "api": "nodemon ./API/app.js",
+    "dev": "start cmd /k vite",
+    "api": "start cmd /k nodemon ./API/app.js",
     "Api_FORCE": "nodemon ./API/appForceUpdateBd.js",
     "frondEnd_Backend": "(/k  npm run dev --start) |  (/k  npm run api --start)",
     "preview": "vite preview --port 5050",
@@ -44,7 +44,7 @@
     "vue": "^3.2.37",
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.14",
-    "vuetify": "^3.0.0-beta.0",
+    "vuetify": "^3.0.0-beta.5",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {

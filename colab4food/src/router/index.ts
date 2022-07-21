@@ -6,7 +6,6 @@ import OrganizationsComponent from '@/components/TheOrganizations.vue';
 import SkeletonLoader from '@/components/SkeletonLoader.vue';
 import BrincarVue from '@/views/brincar.vue';
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -44,7 +43,7 @@ const router = createRouter({
       path: "/brincar",
       name: 'brincar',
       component: BrincarVue
-    }
+    },
   ]
 })
 

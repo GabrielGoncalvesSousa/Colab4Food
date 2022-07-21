@@ -3,9 +3,10 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { viteCommonjs } from '@originjs/vite-plugin-commonjs'
 // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vite-plugin
-import vuetify from 'vite-plugin-vuetify'
+import vuetifyPlugin from 'vite-plugin-vuetify'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
+
 
 // https://vitejs.dev/config/
 //@ts-ignore
@@ -57,11 +58,16 @@ export default defineConfig(({ command, mode }) => {
     },
     plugins: [
       vue({
-
+        template: {
+          compilerOptions: {
+            // isCustomElement: tag => tag.startsWith('v')
+          }
+        }
       }),
-      vuetify({ autoImport: true }),
+      vuetifyPlugin({ autoImport: true }),
       viteCommonjs(),
       vueJsx(),
+
 
 
       //Desactivated autoImport, managed to find a solution for importing axios

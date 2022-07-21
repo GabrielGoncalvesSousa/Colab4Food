@@ -5,20 +5,17 @@
         <TheSidebar app elevate-on-scroll scroll-target="#scrolling-techniques-7"></TheSidebar>
         <TheTopBar app></TheTopBar>
 
-
-
         <!-- <v-main id="container" scroll-off-screen> -->
 
-
-        <UiBottomSheet></UiBottomSheet>
+        <UiBottomSheet></UiBottomSheet>x
         <v-container fluid id="container" class=" fill-height">
 
             <v-main id="container1">
                 <router-view v-slot="{ Component }">
-
                     <transition name="slide" mode="out-in">
-
-                        <component :is="Component" :key="$route.path" app></component>
+                        <keep-alive>
+                            <component :is="Component" :key="$route.path" app></component>
+                        </keep-alive>
                     </transition>
                 </router-view>
             </v-main>
