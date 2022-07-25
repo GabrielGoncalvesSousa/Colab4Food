@@ -3,6 +3,8 @@ let mainFunction = (db) => {
     res.send(await db.distrito.findAll());
   };
 
+  
+
   return {
     getAllDistritos,
   };

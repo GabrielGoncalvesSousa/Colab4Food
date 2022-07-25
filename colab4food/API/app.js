@@ -1,37 +1,38 @@
 const { app, sequelize } = require('./mainIndex');
 
 app.listen(3000, async () => {
-  console.log('Server running');
-  let format = 'YYYY-MM-DD hh:mm:ss ';
-  let todayDate = new Date();
-  let year = todayDate.getFullYear();
-  let month = todayDate.getUTCMonth() + 1;
-  let day = todayDate.getDate();
-  let hours = todayDate.getHours();
-  let minutes = todayDate.getMinutes();
-  let seconds = todayDate.getSeconds();
+ console.log('Server running');
+ let format = 'YYYY-MM-DD hh:mm:ss ';
+ let todayDate = new Date();
+ let year = todayDate.getFullYear();
+ let month = todayDate.getUTCMonth() + 1;
+ let day = todayDate.getDate();
+ let hours = todayDate.getHours();
+ let minutes = todayDate.getMinutes();
 
-  let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
+ let seconds = todayDate.getSeconds();
 
-  await sequelize.sync({ banana: true, logging: true }).then(() => {
-    console.log(`Database synced`);
-  });
+ let jesusChrist = `'${year}-${month}-${day} ${hours}:${minutes}:${seconds}'`;
 
-  //Example of a migration constraint
-  // await queryInterface.addConstraint('user', {
-  //   fields: [
-  //     'id_tipoUser',
-  //   ],
+ await sequelize.sync({ logging: true }).then(() => {
+  console.log(`Database synced`);
+ });
 
-  //   type: 'foreign key',
-  //   name: 'FK_tipoUser_user',
-  //   references: {
-  //     table: 'tipo_user',
-  //     field: 'id_tipoUser',
-  //   },
-  //   onDelete: 'cascade',
-  //   onUpdate: 'cascade',
-  // });
+ //Example of a migration constraint
+ // await queryInterface.addConstraint('user', {
+ //   fields: [
+ //     'id_tipoUser',
+ //   ],
 
-  // await sequelize.sync();
+ //   type: 'foreign key',
+ //   name: 'FK_tipoUser_user',
+ //   references: {
+ //     table: 'tipo_user',
+ //     field: 'id_tipoUser',
+ //   },
+ //   onDelete: 'cascade',
+ //   onUpdate: 'cascade',
+ // });
+
+ // await sequelize.sync();
 });
