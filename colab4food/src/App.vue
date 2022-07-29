@@ -1,40 +1,10 @@
 <template>
-
-  <router-view :globalData="globalData" />
+ <router-view />
 
 </template>
 
-<!-- <script >
-export default ({
-  data() {
-    return {
-      globalData: ['lol1,lol2']
-    }
-  },
-
-  mounted() {
-    console.log(this)
-
-    this.axios.get('http://192.168.1.82:3000/user/getAllUsers',)
-      .then((response) => {
-        console.log(response.data);
-        this.teste = response.data
-      }
-      )
-
-    console.log(this);
-    console.log(this.$refs);
-    console.log(this.$props);
-    console.log(this.$.appContext.app.axios);
-  },
-})
-</script>
- -->
-
 <script setup lang="ts">
 import { inject, onMounted } from '@vue/runtime-dom';
-// import { injectStrict } from './symbols';
-// import { AxiosKey } from './symbols';
 
 import TheTopBar from './components/TheTopBar.vue';
 
@@ -48,8 +18,10 @@ onMounted(() => {
 })
 </script>
 
-<style lang="scss">
-@use'@material/theme' with($primary: red,
-  $secondary: green,
-)
+
+<style scoped lang="scss">
+/**
+    Overwrite vuetify's default v-application--wrap min-height: 100vh;
+    Due to the many problems with vh on mobile devices.
+   */
 </style>

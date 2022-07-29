@@ -19,10 +19,16 @@ export const useGenericStore = defineStore({
   },
 
   //Orgs CRUD
-  //Get organization by id
+  //Create org
+  async createOrg() {
+
+
+  },
+
+  //Get org by id
   async getOneOrgInfo(id_organizacao: number) {
    try {
-    return (await (axios.post('http://localhost:3000/organizacao/getAllOrgInfo', {
+    return (await (axios.post('http://localhost:3000/organizacao/getOneOrgInfo', {
      headers: { 'content-type': 'application/x-www-form-urlencoded' },
      id: id_organizacao
     }))).data
@@ -30,6 +36,16 @@ export const useGenericStore = defineStore({
    } catch (err) {
     console.log(err);
    }
+  },
+
+  //Edit org
+  async editOrg(org: any) {
+
+  },
+
+  //Remove org
+  async removeOrg() {
+
   },
 
   //Contact Process CRUD
@@ -56,7 +72,17 @@ export const useGenericStore = defineStore({
    }
   },
 
+  //Edit contact process
+  async editInfoProcessoContacto(processoContacto: any) { },
+
+  //Remove contact process
+  async removeProcessoContacto() { },
+
   //Oportunities CRUD
+
+  //Create opportunity
+  async createOportunidade() { },
+
   //Get all oportunities
   async getAllInfoOportunidades() {
    try {
@@ -79,11 +105,12 @@ export const useGenericStore = defineStore({
    }
   },
 
+  //Edit oportunitie
+  async editOportunidade(oportunidade: any) { },
 
-
-
+  //Remove oportunitie
+  async removeOportunidade() { },
  }
-
 
 
 })

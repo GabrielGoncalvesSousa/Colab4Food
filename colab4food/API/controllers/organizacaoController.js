@@ -1,5 +1,3 @@
-const organizacao = require("../models/organizacao");
-
 let mainFunction = (db) => {
  let getAllOrganizacoes = async (req, res) => {
   res.send(await db.organizacao.findAll());
@@ -20,36 +18,68 @@ let mainFunction = (db) => {
    .then((response) => {
     res.send(response)
    })
-
-
-  // include: [db.prioridade, db.distrito, db.tipo_organizacao]
-
-  // .then((response) => {
-  //   console.log(response);
-  //   db.contacto.findAll({
-  //     // where: {
-  //     //   id_organizacao: response.id_organizacao
-  //     // }
-  //   }).then((secondRes) => {
-  //     console.log(secondRes);
-
-  //   })
-  //   res.send(response)
-  // })
  }
 
  let createOrg = async (req, res) => {
-  //Vou ter que criar uma organizacao
-  //id_organizacao , id_tipoOrganizacao, id_prioridade, id_user, id_distrito, nomeOrganizacao, cidade, codigo-postal,rua, 
-  const org = await organizacao.create({ id_organizacao })
-
+  try {
+   await db.organizacao.create({
+    id_tipoOrganizacao: req.body.id_tipoOrganizacao,
+    id_prioridade: req.body.id_prioridade,
+    id_user: req.body.id_user,
+    id_distrito: req.body.id_distrito,
+    nomeOrganizacao: req.body.nomeOrganizacao,
+    cidade: req.body.cidade,
+    'codigo-postal': req.body.codigo_postal,
+    rua: req.body.rua,
+   })
+   return res.send('Organização criada com sucesso')
+  } catch (err) {
+   return res.send(`Erro ao criar a organização ${err}`)
+  }
  }
 
+ let updateOrg = async (req, res) => {
+  try {
+   await db.organizacao.update({
+    id_tipoOrganizacao: req.body.id_tipoOrganizacao,
+    id_prioridade: req.body.id_prioridade,
+    id_user: req.body.id_user,
+    id_distrito: req.body.id_distrito,
+    nomeOrganizacao: req.body.nomeOrganizacao,
+    cidade: req.body.cidade,
+    'codigo-postal': req.body.codigo_postal,
+    rua: req.body.rua,
+   }, {
+    where: {
+     id_organizacao: req.body.id_organizacao
+    }
+   })
+   return res.send('Organização atualizada com sucesso')
+  } catch (err) {
+   return res.send(`Erro ao atualizar a organização ${err}`)
+  }
+ }
+
+ let removeOrg = async (req, res) => {
+  try {
+   await db.organizacao.destroy({
+    where: {
+     id_organizacao: req.body.id_organizacao
+    }
+   })
+   return res.send('Organização removida com sucesso')
+  } catch (err) {
+   return res.send(`Erro ao remover a organização ${err}`)
+  }
+ }
 
  return {
   getAllOrganizacoes,
   getAllOrganizacoesWithPriority,
-  getAllOrgInfo: getOneOrgInfo
+  getOneOrgInfo,
+  createOrg,
+  updateOrg,
+  removeOrg
  };
 };
 

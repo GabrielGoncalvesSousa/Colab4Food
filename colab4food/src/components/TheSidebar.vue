@@ -3,32 +3,31 @@
 
  <v-navigation-drawer permanent color="blue" app>
   <img src="https://colab4food.com/front/img/logotipo.png" width=195 class="px-2 py-4 mx-auto d-block ">
-
-
   <v-list nav dense>
 
-   <v-list-item link to="/home" class="">
-    <v-list-item-icon icon="mdi-home" size="30" class="pl-7"></v-list-item-icon>
+   <v-list-item to="/main/home" class="">
+    <v-list-item-icon icon=" mdi-home" size="30" class="pl-7">
+    </v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Home</v-list-item-title>
    </v-list-item>
 
 
 
 
-   <v-list-item link to="/organizations" class="">
+   <v-list-item to="/main/organizations" class="">
     <v-list-item-icon icon="mdi-office-building" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">organizations</v-list-item-title>
    </v-list-item>
 
 
 
-   <v-list-item link to="/contactProcesses" class="">
+   <v-list-item to="/main/contactProcesses" class="">
     <v-list-item-icon icon="mdi-human-greeting-proximity" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Contacto Processes</v-list-item-title>
    </v-list-item>
 
 
-   <v-list-item link to="/opportunities" class="">
+   <v-list-item to="/main/opportunities" class="">
     <v-list-item-icon icon="mdi-handshake-outline" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Opportunities</v-list-item-title>
    </v-list-item>
@@ -36,7 +35,7 @@
 
 
 
-   <v-list-item link to="/customerOutline" class="">
+   <v-list-item to="/main/customerOutline" class="">
     <v-list-item-icon icon="mdi-book-open-outline" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Customer Outline</v-list-item-title>
    </v-list-item>
@@ -45,7 +44,7 @@
 
 
 
-   <v-list-item link to="/calculations" class="">
+   <v-list-item to="/main/calculations" class="">
     <v-list-item-icon icon="mdi-calculator-variant-outline" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Calculations</v-list-item-title>
    </v-list-item>
@@ -54,14 +53,14 @@
 
 
 
-   <v-list-item link to="/dashboard" class="">
+   <v-list-item to="/main/dashboard" class="">
     <v-list-item-icon icon="mdi-view-dashboard-variant-outline" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Dashboard</v-list-item-title>
    </v-list-item>
 
 
 
-   <v-list-item link to="/dropdown" class="">
+   <v-list-item to="/main/dropdown" class="">
     <v-list-item-icon icon="mdi-menu" size="30" class="pl-7"></v-list-item-icon>
     <v-list-item-title style="font-size:22px" class="pl-5">Dropdown</v-list-item-title>
    </v-list-item>
@@ -70,11 +69,11 @@
 
 
 
-   <v-list-item>
+   <!-- <v-list-item>
     <router-link to="/login">
      <v-btn>Go to login</v-btn>
     </router-link>
-   </v-list-item>
+   </v-list-item> -->
 
   </v-list>
 

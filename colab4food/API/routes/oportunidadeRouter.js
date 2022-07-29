@@ -9,6 +9,16 @@ let oportunidadeRouter = (oportunidadeController) => {
 
  let getOportunidadeById = oportunidadeController.getOportunidadeById;
  router.post('/getOportunidadeById', getOportunidadeById);
+
+ let createOportunidade = oportunidadeController.createOportunidade;
+ router.post('/createOportunidade', createOportunidade);
+
+ let updateOportunidade = oportunidadeController.updateOportunidade;
+ router.post('/updateOportunidade', updateOportunidade);
+
+ let removeOportunidade = oportunidadeController.removeOportunidade;
+ router.post('/removeOportunidade', removeOportunidade);
+
  return router;
 
 };

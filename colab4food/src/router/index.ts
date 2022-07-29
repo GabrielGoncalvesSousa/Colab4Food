@@ -3,7 +3,6 @@ import LoginView from '@/views/LoginView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/MainView.vue'
 import OrganizationsComponent from '@/components/Organizations/TheOrganizations.vue';
-import SkeletonLoader from '@/components/SkeletonLoader.vue';
 import BrincarVue from '@/views/brincar.vue';
 import TheContactProcessVue from '@/components/ContactProcesses/TheContactProcess.vue';
 import TheOpportunitiesVue from '@/components/Opportunities/TheOpportunities.vue';
@@ -23,43 +22,43 @@ const router = createRouter({
 
    children: [
     {
-     path: '/home',
+     path: 'home',
      name: 'home ',
      component: HomeComponent,
     },
     {
-     path: '/organizations',
+     path: 'organizations',
      name: 'organizations ',
      component: OrganizationsComponent,
     },
 
     {
-     path: '/contactProcesses',
+     path: 'contactProcesses',
      name: 'contactProcesses',
      component: TheContactProcessVue,
     },
     {
-     path: '/opportunities',
+     path: 'opportunities',
      name: 'opportunities',
      component: TheOpportunitiesVue,
     },
     {
-     path: '/customerOutline',
+     path: 'customerOutline',
      name: 'customerOutline',
      component: TheCustomerOutlineVue,
     },
     {
-     path: '/calculations',
+     path: 'calculations',
      name: 'calculations',
      component: TheCalculationsVue,
     },
     {
-     path: '/dashboard',
+     path: 'dashboard',
      name: 'dashboard',
      component: TheDashboardVue,
     },
     {
-     path: '/dropdown',
+     path: 'dropdown',
      name: 'dropdown',
      component: TheDropdownVue,
     },
@@ -79,11 +78,7 @@ const router = createRouter({
    name: '/login',
    component: LoginView
   },
-  {
-   path: "/skele",
-   name: 'skele',
-   component: SkeletonLoader
-  },
+
   {
    path: "/brincar",
    name: 'brincar',

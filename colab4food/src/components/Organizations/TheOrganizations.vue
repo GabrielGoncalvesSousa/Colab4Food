@@ -1,66 +1,39 @@
 <template>
- <v-app>
-  <ui-table v-model="refObject.selectedRows" :data="refObject.displayedData" :thead="refObject.thead"
-   :tbody="refObject.tbody" :tfoot="refObject.tfoot" row-checkbox fullwidth selected-key="id_organizacao">
 
-   <template #nomeSlot aria-describedby="th-cell-1">
-    Nome
-    <ui-icon v-tooltip="'Deixa de ser gay'" aria-describedby="th-cell-1">
-     error_outline
-    </ui-icon>
+ <ui-table v-model="refObject.selectedRows" :data="refObject.displayedData" :thead="refObject.thead"
+  :tbody="refObject.tbody" :tfoot="refObject.tfoot" row-checkbox fullwidth selected-key="id_organizacao">
 
-   </template>
-   <template #nome="{ data }">
-    <div>{{ data.nomeOrganizacao }}</div>
-   </template>
-   <template #actions="{ data }">
+  <template #nomeSlot aria-describedby="th-cell-1">
+   Nome
+   <ui-icon v-tooltip="'Deixa de ser gay'" aria-describedby="th-cell-1">
+    error_outline
+   </ui-icon>
 
-    <ui-icon @click="show(data)">edit</ui-icon>
-    <ui-icon @click="remove(data)">delete</ui-icon>
-    <UiBottomSheet></UiBottomSheet>
-   </template>
+  </template>
+  <template #nome="{ data }">
+   <div>{{ data.nomeOrganizacao }}</div>
+  </template>
+  <template #actions="{ data }">
 
-   <ui-pagination v-model="refObject.page" :total="refObject.total" @click="onPage(refObject.page)" showTotal>
-   </ui-pagination>
-  </ui-table>
+   <ui-icon @click="show(data)">edit</ui-icon>
+   <ui-icon @click="remove(data)">delete</ui-icon>
+   <UiBottomSheet></UiBottomSheet>
+  </template>
 
-  <!-- 
-  <keep-alive>
-   <v-overlay v-model="switcher" class="overlay">
-   dwd
-   </v-overlay>
-  </keep-alive> -->
-
-  <!-- @ts-ignore -->
-
-  <v-btn @click="switcher = !switcher">
-   Switcher
-  </v-btn>
-
-  <p> Valor switcher = {{ switcher }}</p>
-
-  <!-- <Teleport to="#here" v-if="switcher">
-            <Transition name="edit" class="editTransition">
-                <v-card>
-                    <p>{{ dataFromRow }}</p>
-                </v-card>
-            </Transition>
-        </Teleport> -->
-
-  <PopupOrgForm v-model="switcher" :dataToDisplay=dataFromRow></PopupOrgForm>
-
-  <v-btn @click="refObject.displayedData[0]"> {{ refObject.selectedRows[0] }}</v-btn>
+  <ui-pagination v-model="refObject.page" :total="refObject.total" @click="onPage(refObject.page)" showTotal>
+  </ui-pagination>
+ </ui-table>
 
 
-  <!-- <p>{{ refObject.displayedData[0] }}</p> -->
- </v-app>
-
+ <PopupOrgForm v-model="switcher" :dataToDisplay=dataFromRow></PopupOrgForm>
 </template>
 
 <script setup lang="tsx">
 import { useGenericStore } from '../../stores/genericStore';
 import { ref, Transition } from 'vue'
 import PopupOrgForm from './PopupOrgForm.vue';
+
+
 
 let overlayStyle = ref({
  position: 'fixed',
@@ -75,6 +48,8 @@ let overlayStyle = ref({
  'z-index': 30,
  cursor: 'pointer'
 })
+
+
 const genericStore = useGenericStore()
 let dataFromRow = ref();
 let switcher = ref(false);

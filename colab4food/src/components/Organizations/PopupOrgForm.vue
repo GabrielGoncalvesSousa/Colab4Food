@@ -1,9 +1,9 @@
 <template>
 
- <v-form>
+ <v-dialog v-model="props.modelValue" contained persistent>
   <v-container>
-   <v-row justify="center">
-    <v-dialog v-model="props.modelValue" persistent>
+   <v-form>
+    <v-row justify="center">
      <!--Acrescentar contained caso queira centrar no proprio conteudo mas nao fica tao bem-->
      <v-card>
       <v-card-title>
@@ -104,15 +104,15 @@
        </v-btn>
       </v-card-actions>
      </v-card>
-    </v-dialog>
-   </v-row>
+    </v-row>
 
-   <v-row>
+    <v-row>
 
-   </v-row>
+    </v-row>
+   </v-form>
   </v-container>
- </v-form>
 
+ </v-dialog>
 
 
 </template>

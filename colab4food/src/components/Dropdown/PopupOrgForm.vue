@@ -3,7 +3,7 @@
  <v-form>
   <v-container>
    <v-row justify="center">
-    <v-dialog v-model="props.modelValue" persistent>
+    <v-dialog v-model="props.modelValue" contained persistent>
      <!--Acrescentar contained caso queira centrar no proprio conteudo mas nao fica tao bem-->
      <v-card>
       <v-card-title>

@@ -14,6 +14,7 @@ let mainFunction = (db) => {
         res.send(response);
       });
   };
+  
 
   return {
     getAllCargos,
